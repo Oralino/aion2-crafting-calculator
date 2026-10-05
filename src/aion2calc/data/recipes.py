@@ -2,9 +2,10 @@
 
 aion2hub has a page per craftable item, including combo items (e.g. "Splendent Ruby Necklace"),
 whose page repeats the recipe that can combo into it. Pages with the same profession, mastery and
-components are one recipe: the lowest grade is the normal result, the next grade the combo result.
-Each faction has its own item ids for the same recipe, so a group can hold two of each; they are
-paired in id order.
+components are one recipe. Within it, a combo item's name keeps every word of its normal item's
+name and adds some ("Splendent ..."); grade is only a sanity check, because the top tier's normal
+and combo items share a grade (both Star Dragon Lord Necklaces are Unique). Each faction has its own
+item ids for the same recipe, so a group can hold two of each; they are paired in id order.
 
 A tier chain follows combo items downwards: a recipe that uses a combo item as a component is the
 next tier of the recipe that combos into it (Star Dragon Lord ← Artisan's ← Expert's ← base).
@@ -176,7 +177,7 @@ def build_catalog(pages: Iterable[RecipePage]) -> tuple[Catalog, list[str]]:
         ingredients = tuple(Ingredient(c.item_id, c.qty) for c in group[0].components)
         kr_tw_only = all(p.kr_tw_only for p in group)
         pairs, problem = _pair(group)
-        if problem:
+        if problem and not kr_tw_only:  # KR/TW-only data has grades Global doesn't (Heroic)
             names = ", ".join(sorted({p.name for p in group}))
             warnings.append(f"{problem} ({names}); combo items left out")
         for normal, combo in pairs:
@@ -194,26 +195,30 @@ def build_catalog(pages: Iterable[RecipePage]) -> tuple[Catalog, list[str]]:
 def _pair(group: list[RecipePage]) -> tuple[list[tuple[int, int | None]], str | None]:
     """Pair a recipe group's normal items with their combo items (one pair per faction)."""
     alone: list[tuple[int, int | None]] = [(p.item_id, None) for p in sorted(group, key=_id)]
-    grades = {p.grade for p in group}
-    if len(grades) == 1:
-        return alone, None
-    if unknown := grades - set(GRADES):
+    names = _by_name(group)
+    grade = {p.name: p.grade for p in group}
+    combo_names = {c for c in names if any(_is_combo_name(n, c) for n in names)}
+    if not combo_names:
+        if len(set(grade.values())) > 1:
+            return alone, "different items share a recipe"
+        return alone, None  # one item (per faction), or several items sharing a recipe
+    if unknown := set(grade.values()) - set(GRADES):
         return alone, f"unknown grade {', '.join(sorted(unknown))}"
-    if len(grades) > 2:
-        return alone, "more than two grades share a recipe"
-    low, high = sorted(grades, key=GRADES.index)
-    normal = _by_name(p for p in group if p.grade == low)
-    combo = _by_name(p for p in group if p.grade == high)
     # Several items can share one recipe (e.g. Orichalcum Dagger, Mace, ...), so match by name.
-    matches = {n: [c for c in combo if _is_combo_name(n, c)] for n in normal}
-    if any(len(found) != 1 for found in matches.values()) or len(matches) != len(combo):
+    matches = {
+        n: [c for c in combo_names if _is_combo_name(n, c)] for n in names if n not in combo_names
+    }
+    matched = [found[0] for found in matches.values() if len(found) == 1]
+    if any(len(found) != 1 for found in matches.values()) or sorted(matched) != sorted(combo_names):
         return alone, "combo names don't match one-to-one"
     pairs: list[tuple[int, int | None]] = []
     for name, (combo_name,) in matches.items():
-        if len(normal[name]) != len(combo[combo_name]):
+        if GRADES.index(grade[combo_name]) < GRADES.index(grade[name]):
+            return alone, "combo item has a lower grade"
+        if len(names[name]) != len(names[combo_name]):
             return alone, "uneven normal and combo items"
-        # Each faction has its own ids; they're numbered in the same order for both grades.
-        pairs += zip(normal[name], combo[combo_name], strict=True)
+        # Each faction has its own ids; they're numbered in the same order for both items.
+        pairs += zip(names[name], names[combo_name], strict=True)
     return sorted(pairs), None
 
 

@@ -148,3 +148,14 @@ def test_items_sharing_a_recipe_pair_by_name() -> None:
     assert warnings == []
     assert catalog.recipes[1].combo_item_id == 4
     assert catalog.recipes[2].combo_item_id == 3
+
+
+def test_top_tier_combo_shares_the_grade() -> None:
+    pages = [
+        page(1, "Star Dragon Lord Necklace", "Unique", 60, STONE),
+        page(2, "Splendent Star Dragon Lord Necklace", "Unique", 60, STONE),
+    ]
+    catalog, warnings = build_catalog(pages)
+    assert warnings == []
+    assert catalog.recipes[1].combo_item_id == 2
+    assert 2 not in catalog.recipes
