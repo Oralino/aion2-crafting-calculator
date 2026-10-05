@@ -2,16 +2,14 @@
 Development tracker. Owner-only items are marked **(owner)**. Detailed history is in git.
 
 ## Current
-- [ ] **(owner)** Provide auction house screenshots (English client) at each resolution to support,
-      ideally a few searches each, for OCR fixtures
 
 ## Next (MVP, in order)
 1. [x] Research spike: recipe sources → aion2hub HTML (findings in ARCHITECTURE.md)
 2. [x] `calc/`: tier cost, needed crafts, exclusions, buy tax; tests reproduce the sheet's Accessories totals
 3. [x] Recipe importer → `data/recipes.json` (SQLite moves to the price task: it only holds prices,
        history and overrides)
-4. [~] OCR spike: RapidOCR (English PP-OCRv5) chosen over Windows OCR on crafting screenshots
-       (results in ARCHITECTURE.md); confirm on auction house screenshots when they arrive
+4. [x] OCR spike: RapidOCR for names + digit template matching for numbers, verified on 5 market
+       captures at 3440×1440 and 1920×1080 (results in ARCHITECTURE.md)
 5. [ ] OCR pipeline: panel detection across resolutions, row parsing, name matching
 6. [ ] Hotkey capture → price_observation
 7. [x] DESIGN.md (approved) and the main window: recipe search, tier blocks, summary with profit,

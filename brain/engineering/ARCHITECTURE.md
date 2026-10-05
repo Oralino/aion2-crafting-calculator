@@ -91,8 +91,16 @@ and `1,428` / `25,320` with thousands separators.
   normalised to 12×18 and matched to templates learned from known captures. Learned from two
   captures, it read an unseen third (`999,990`, `249,998`, `1,850,000`, counts) with no errors.
 - **Decision:** RapidOCR for item names; glyph template matching for prices and listing counts.
-  Templates ship with the app. Still to verify: other resolutions (glyph size changes; matching
-  normalises size, but thin strokes may differ) and equipment rows.
+  Templates ship with the app.
+- **Verified across resolutions:** templates learned only from 3440×1440 captures read a 1920×1080
+  windowed capture (text ~25% smaller) with no errors.
+- **Layout is found, not hard-coded:** columns come from the OCR'd header labels ("Sales List",
+  "Lowest Sale Price"), rows from the item-name boxes. The panel's position and width change with
+  the window's aspect ratio (21:9 vs 16:9), so fixed coordinates would not work.
+- **Equipment rows** add an "Item Level N" line under the name (skip it). **Rows with 0 listings**
+  are dimmed and show price 0: the dim digits fail the white-text test, so they yield no price,
+  never 0 Kinah. A row cut off by scrolling also yields no price. Item-icon badges OCR as stray
+  short text ("a"); names are kept only when they match the recipe catalog.
 - Test captures: `tests/fixtures/market/*_3440x1440.png` (listings panel crops only, no personal
   information) with the expected rows in matching `.json` files.
 ## Recipe data
