@@ -188,16 +188,27 @@ def _pair(group: list[RecipePage]) -> tuple[list[tuple[int, int | None]], str | 
     if len(grades) > 2:
         return alone, "more than two grades share a recipe"
     low, high = sorted(grades, key=GRADES.index)
-    normal = sorted((p for p in group if p.grade == low), key=_id)
-    combo = sorted((p for p in group if p.grade == high), key=_id)
-    if len(normal) != len(combo):
-        return alone, "uneven normal and combo items"
-    if len({p.name for p in normal}) != 1 or len({p.name for p in combo}) != 1:
-        return alone, "different items share a recipe"
-    if not _is_combo_name(normal[0].name, combo[0].name):
-        return alone, "combo name doesn't match"
-    # Each faction has its own ids; they're numbered in the same order for both grades.
-    return [(n.item_id, c.item_id) for n, c in zip(normal, combo, strict=True)], None
+    normal = _by_name(p for p in group if p.grade == low)
+    combo = _by_name(p for p in group if p.grade == high)
+    # Several items can share one recipe (e.g. Orichalcum Dagger, Mace, ...), so match by name.
+    matches = {n: [c for c in combo if _is_combo_name(n, c)] for n in normal}
+    if any(len(found) != 1 for found in matches.values()) or len(matches) != len(combo):
+        return alone, "combo names don't match one-to-one"
+    pairs: list[tuple[int, int | None]] = []
+    for name, (combo_name,) in matches.items():
+        if len(normal[name]) != len(combo[combo_name]):
+            return alone, "uneven normal and combo items"
+        # Each faction has its own ids; they're numbered in the same order for both grades.
+        pairs += zip(normal[name], combo[combo_name], strict=True)
+    return sorted(pairs), None
+
+
+def _by_name(pages: Iterable[RecipePage]) -> dict[str, list[int]]:
+    """Item ids per name, in id order."""
+    names: dict[str, list[int]] = defaultdict(list)
+    for page in sorted(pages, key=_id):
+        names[page.name].append(page.item_id)
+    return names
 
 
 def _id(page: RecipePage) -> int:

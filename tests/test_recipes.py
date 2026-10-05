@@ -135,3 +135,16 @@ def test_two_combo_ingredients_are_reported() -> None:
     ]
     _, warnings = build_catalog(pages)
     assert any("more than one combo item" in w for w in warnings)
+
+
+def test_items_sharing_a_recipe_pair_by_name() -> None:
+    pages = [
+        page(1, "Orichalcum Dagger", "Common", 1, STONE),
+        page(2, "Orichalcum Mace", "Common", 1, STONE),
+        page(3, "Splendent Orichalcum Mace", "Rare", 1, STONE),
+        page(4, "Splendent Orichalcum Dagger", "Rare", 1, STONE),
+    ]
+    catalog, warnings = build_catalog(pages)
+    assert warnings == []
+    assert catalog.recipes[1].combo_item_id == 4
+    assert catalog.recipes[2].combo_item_id == 3
