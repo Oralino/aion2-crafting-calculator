@@ -31,7 +31,6 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 - [ ] Proficiency-based craft chance (success curve by crafting level vs. recipe level)
 
 ## Owner questions (TBD)
-- [ ] **(owner)** Default buy/sell tax rates (10% each?)
 
 ## Bugs
 None open.

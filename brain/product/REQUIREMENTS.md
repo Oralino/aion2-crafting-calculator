@@ -54,8 +54,8 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
    value: (1 − combo) × sell price + combo × Splendent sell price, then sell tax. Without a
    Splendent price it's valued at the normal price, with a warning (owner, 2026-10-05).
 7. **Tax, configurable:** separate buy-side tax (applied to material cost, the sheet's ×1.1) and
-   sell-side tax (deducted from the sale price in the profit calc). Default 10% each: TBD (owner)
-   to confirm defaults.
+   sell-side tax (deducted from the sale price in the profit calc). Default 10% each (confirmed by
+   the owner for Global, 2026-10-05).
 8. **Price history:** every OCR reading is stored with a timestamp; show a price trend per item.
 9. **Multiple resolutions:** OCR must work across common screen sizes, not one fixed layout.
 
