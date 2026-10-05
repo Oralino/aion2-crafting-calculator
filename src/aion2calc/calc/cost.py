@@ -44,7 +44,8 @@ class Tier:
     chance: float | None = None
     """Craft success rate in (0, 1]; None means every craft succeeds."""
     combo_rate: float = DEFAULT_COMBO_RATE
-    """Share of successes that combo into the next tier's item. Unused on the final tier."""
+    """Share of successes that combo into the Splendent item. Below the top tier it feeds the next
+    tier; on the top tier it only affects the expected sale (see calc.profit), not the cost."""
 
     def __post_init__(self) -> None:
         if self.chance is not None:

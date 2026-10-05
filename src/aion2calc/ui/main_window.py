@@ -173,7 +173,7 @@ class MainWindow(QMainWindow):
         chain: list[QWidget] = [self.search, self.tabs]
         for block in self.blocks:
             chain += block.focus_chain()
-        chain.append(self.summary.sell_field)
+        chain += self.summary.focus_chain()
         for first, second in zip(chain, chain[1:], strict=False):
             QWidget.setTabOrder(first, second)
 

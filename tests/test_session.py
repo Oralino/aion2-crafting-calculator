@@ -22,6 +22,12 @@ CATALOG, _ = build_catalog(
 )
 
 
+def gross(s: CraftSession) -> float:
+    result = s.sale()
+    assert result is not None
+    return result.gross
+
+
 def session() -> CraftSession:
     return CraftSession(CATALOG, 20)
 
@@ -122,3 +128,48 @@ def test_exclusion_is_per_tier() -> None:
 def test_prices_carry_into_a_new_session() -> None:
     s = CraftSession(CATALOG, 20, prices={1: 100})
     assert s.rows(0)[0].unit_price == 100
+
+
+def test_top_tier_combo_counts_in_the_sale() -> None:
+    catalog, _ = build_catalog(
+        [
+            page(10, "Ruby Necklace", "Common", STONE),
+            page(11, "Splendent Ruby Necklace", "Rare", STONE),
+        ]
+    )
+    s = CraftSession(catalog, 10)
+    s.settings.sell_tax = 0
+    assert s.final_combo_item == 11
+    s.set_sell_price(1_000)
+    assert s.warnings()[-1] == "No Splendent sell price (valued at the normal price)"
+    assert gross(s) == 1_000
+    s.set_combo_sell_price(5_000)
+    s.set_combo_rate(0, 0.5)
+    assert gross(s) == 3_000
+
+
+def test_no_combo_version_sells_at_one_price() -> None:
+    s = session()  # Expert's Ruby Necklace: no Splendent version in this catalog
+    s.settings.sell_tax = 0
+    s.set_sell_price(1_000)
+    s.set_combo_sell_price(9_000)
+    assert s.final_combo_item is None
+    assert gross(s) == 1_000
+
+
+def test_low_splendent_price_is_flagged_and_top_combo_leaves_cost_alone() -> None:
+    catalog, _ = build_catalog(
+        [
+            page(10, "Ruby Necklace", "Common", STONE),
+            page(11, "Splendent Ruby Necklace", "Rare", STONE),
+        ]
+    )
+    s = CraftSession(catalog, 10)
+    s.set_price(STONE.item_id, 100)
+    cost_before = s.cost().total
+    s.set_combo_rate(0, 0.5)
+    assert s.cost().total == cost_before  # the top combo only changes the sale
+    assert s.warnings() == ["1 tier has no craft chance (counted as 100%)"]  # no sell price yet
+    s.set_sell_price(5_000)
+    s.set_combo_sell_price(500)
+    assert s.warnings()[-1] == "Splendent sell price is below the normal price; typo?"

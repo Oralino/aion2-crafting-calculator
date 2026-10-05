@@ -154,3 +154,35 @@ def test_bundled_fonts_load(window: MainWindow) -> None:
     families = theme.load_fonts()
     assert "Inter" in families
     assert "JetBrains Mono" in families
+
+
+def test_top_tier_combo_shows_and_feeds_the_expected_sale(window: MainWindow) -> None:
+    assert top(window).has_combo  # Star Dragon Lord has a Splendent version
+    summary = window.summary
+    assert not summary.combo_sell_field.isHidden()
+    summary.sell_field.setText("10,000,000")
+    summary.sell_field.editingFinished.emit()
+    summary.combo_sell_field.setText("30,000,000")
+    summary.combo_sell_field.editingFinished.emit()
+    # 75% × 10M + 25% × 30M = 15M expected; minus 10% sell tax = 13.5M; no costs entered.
+    assert summary._expected.text() == "15,000,000"
+    assert summary._profit.text() == "+13,500,000"
+
+
+def test_recipe_without_splendent_hides_its_price(window: MainWindow, catalog: Catalog) -> None:
+    window.summary.combo_sell_field.setText("30,000,000")
+    window.summary.combo_sell_field.editingFinished.emit()
+    no_combo = next(
+        i for i in searchable_recipes(catalog).values() if catalog.recipes[i].combo_item_id is None
+    )
+    window.open_recipe(no_combo)
+    assert window.summary.combo_sell_field.isHidden()
+    assert window.summary.combo_sell_field.text() == ""
+    assert window.session is not None and window.session.combo_sell_price is None
+
+
+def test_bad_splendent_price_names_the_field(window: MainWindow) -> None:
+    window.summary.combo_sell_field.setText("lots")
+    window.summary.combo_sell_field.editingFinished.emit()
+    assert window.summary.combo_sell_field.property("invalid") is True
+    assert window._status.text().startswith("Splendent price")

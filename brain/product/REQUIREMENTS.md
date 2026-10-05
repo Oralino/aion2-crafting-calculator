@@ -49,7 +49,10 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
    success rates); the combo rate defaults to 25% and can be changed per tier.
 5. **Buy vs. craft per tier:** for each intermediate Splendent item (e.g. Expert's Splendent Ruby
    Necklace), compare buying it on the market with crafting it, and use the cheaper path.
-6. **Profit:** compare total crafting cost with the finished item's market price.
+6. **Profit:** compare total crafting cost with the finished item's market price. The top tier's
+   successes also combo (25% by default) into the Splendent version, so the sale is an expected
+   value: (1 − combo) × sell price + combo × Splendent sell price, then sell tax. Without a
+   Splendent price it's valued at the normal price, with a warning (owner, 2026-10-05).
 7. **Tax, configurable:** separate buy-side tax (applied to material cost, the sheet's ×1.1) and
    sell-side tax (deducted from the sale price in the profit calc). Default 10% each: TBD (owner)
    to confirm defaults.

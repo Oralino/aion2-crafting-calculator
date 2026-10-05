@@ -363,8 +363,14 @@ class TierBlock(QFrame):
         self.chance.setToolTip("Your in-game craft success rate for this recipe, e.g. 93.1")
         self.combo = _RateField(f"Combo chance percent, {recipe_name}")
         self.combo.setText(percent(settings.combo_rate).removesuffix("%"))
-        self.combo.setToolTip("Chance a successful craft gives the Splendent (combo) item")
-        self.has_combo = tier_index < len(session.tiers) - 1  # the top tier's combo feeds nothing
+        top_tier = tier_index == len(session.tiers) - 1
+        self.combo.setToolTip(
+            "Chance a successful craft gives the Splendent version (counts in the expected sale)"
+            if top_tier
+            else "Chance a successful craft gives the Splendent (combo) item the next tier needs"
+        )
+        # Every lower tier feeds the next one; the top tier's combo only matters if it has one.
+        self.has_combo = not top_tier or session.final_combo_item is not None
         self.chance.editingFinished.connect(self._chance_edited)
         self.combo.editingFinished.connect(self._combo_edited)
 
@@ -372,7 +378,11 @@ class TierBlock(QFrame):
         self._crafts = _label("", "num")
         self._cost = _label("", "num-strong")
         self._lost = _label("", "num-secondary")
-        self._lost.setToolTip("Spent on crafts that failed or didn't combo; part of the tier cost.")
+        self._lost.setToolTip(
+            "Spent on crafts that failed; part of the tier cost."
+            if top_tier
+            else "Spent on crafts that failed or didn't combo; part of the tier cost."
+        )
 
         top = QHBoxLayout()
         top.setSpacing(8)

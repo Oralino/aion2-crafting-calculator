@@ -107,6 +107,9 @@ class CraftSession:
         self.excluded: set[tuple[int, int]] = set()
         """(tier index, item id) pairs left out of the cost."""
         self.sell_price: int | None = None
+        """Market price of the normal final item."""
+        self.combo_sell_price: int | None = None
+        """Market price of the final item's Splendent (combo) version, if it has one."""
         # Each tier above the first uses up the combo item made by the tier below it.
         self._crafted = {
             index + 1: tier.recipe.combo_item_id
@@ -117,6 +120,11 @@ class CraftSession:
     @property
     def final_item(self) -> int:
         return self.tiers[-1].recipe.item_id
+
+    @property
+    def final_combo_item(self) -> int | None:
+        """The Splendent version the top tier can combo into, if any."""
+        return self.tiers[-1].recipe.combo_item_id
 
     def name(self, item_id: int) -> str:
         return self.catalog.name(item_id)
@@ -155,6 +163,9 @@ class CraftSession:
 
     def set_sell_price(self, price: int | None) -> None:
         self.sell_price = None if price is None else check_kinah(price)
+
+    def set_combo_sell_price(self, price: int | None) -> None:
+        self.combo_sell_price = None if price is None else check_kinah(price)
 
     def set_chance(self, tier_index: int, chance: float | None) -> None:
         """None means not entered (counted as 100%)."""
@@ -196,9 +207,20 @@ class CraftSession:
         return craft_cost(self.craft(), self.settings.buy_tax)
 
     def sale(self) -> Sale | None:
+        """Expected sale of the final items. The top tier's combo chance gives the Splendent
+        version; without its price, it's valued at the normal price."""
         if self.sell_price is None:
             return None
-        return sale(self.cost().total, self.sell_price, self.settings.sell_tax)
+        has_combo = self.final_combo_item is not None
+        craft = self.craft()
+        return sale(
+            craft_cost(craft, self.settings.buy_tax).total,
+            self.sell_price,
+            self.settings.sell_tax,
+            combo_price=self.combo_sell_price if has_combo else None,
+            combo_rate=self.tiers[-1].combo_rate if has_combo else 0.0,
+            items=craft.target,
+        )
 
     def warnings(self) -> list[str]:
         missing = {
@@ -215,4 +237,9 @@ class CraftSession:
         if no_chance:
             noun = "tier has" if no_chance == 1 else "tiers have"
             notes.append(f"{no_chance} {noun} no craft chance (counted as 100%)")
+        if self.sell_price is not None and self.final_combo_item is not None:
+            if self.combo_sell_price is None:
+                notes.append("No Splendent sell price (valued at the normal price)")
+            elif self.combo_sell_price < self.sell_price:
+                notes.append("Splendent sell price is below the normal price; typo?")
         return notes

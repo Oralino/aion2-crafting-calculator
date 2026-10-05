@@ -1,4 +1,6 @@
-"""Right-hand summary: craft total, tax, total cost, warnings, sell price and profit."""
+"""Right-hand summary: craft total, tax, total cost, warnings, sell prices and (expected) profit."""
+
+from collections.abc import Callable
 
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import QFrame, QGridLayout, QLabel, QLineEdit, QVBoxLayout, QWidget
@@ -18,6 +20,32 @@ def _restyle(widget: QWidget) -> None:
     widget.style().polish(widget)
 
 
+def _divider() -> QFrame:
+    line = QFrame()
+    line.setProperty("role", "divider")
+    return line
+
+
+class _PriceField(QLineEdit):
+    """A Kinah input that validates on Enter/focus-out and writes through a session setter."""
+
+    def __init__(self, accessible_name: str, tip: str) -> None:
+        super().__init__()
+        self.setProperty("numeric", True)
+        self.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.setPlaceholderText("Kinah")
+        self.setToolTip(tip)
+        self.setAccessibleName(accessible_name)
+
+    def show_price(self, price: int | None) -> None:
+        self.setText("" if price is None else f"{price:,}")
+        self.set_invalid(False)
+
+    def set_invalid(self, invalid: bool) -> None:
+        self.setProperty("invalid", invalid)
+        _restyle(self)
+
+
 class SummaryPanel(QWidget):
     changed = Signal()
     message = Signal(str)
@@ -35,19 +63,31 @@ class SummaryPanel(QWidget):
         self._total = _label(DASH, "display")
         self._warnings = _label("", "warning")
         self._warnings.setWordWrap(True)
-        self._sell = QLineEdit()
-        self._sell.setProperty("numeric", True)
-        self._sell.setAlignment(Qt.AlignmentFlag.AlignRight)
-        self._sell.setPlaceholderText("Kinah")
-        self._sell.setToolTip("What the finished item sells for on the market")
-        self._sell.setAccessibleName("Sell price in Kinah")
-        self._sell.editingFinished.connect(self._sell_edited)
+        self.sell_field = _PriceField(
+            "Sell price in Kinah", "What the finished item sells for on the market"
+        )
+        self.combo_sell_field = _PriceField(
+            "Splendent sell price in Kinah",
+            "What the Splendent (combo) version of the finished item sells for",
+        )
+        self.sell_field.editingFinished.connect(
+            lambda: self._price_edited(self.sell_field, "Sell price", CraftSession.set_sell_price)
+        )
+        self.combo_sell_field.editingFinished.connect(
+            lambda: self._price_edited(
+                self.combo_sell_field, "Splendent price", CraftSession.set_combo_sell_price
+            )
+        )
+        self._combo_sell_label = _label("Splendent price", "secondary")
+        self._expected_label = _label("Sale", "secondary")
+        self._expected = _label(DASH, "num")
         self._sell_tax_label = _label("Sell tax", "secondary")
         self._sell_tax = _label(DASH, "num")
         self._net = _label(DASH, "num")
         self._profit_label = _label("Profit", "secondary")
         self._profit = _label(DASH, "display")
         self._profit_hint = _label("Enter a sell price", "caption")
+        self._profit_hint.setWordWrap(True)
 
         grid = QGridLayout()
         grid.setVerticalSpacing(8)
@@ -58,7 +98,9 @@ class SummaryPanel(QWidget):
             (_label("Total cost", "title"), self._total),
             (self._warnings, None),
             (_divider(), None),
-            (_label("Sell price", "secondary"), self._sell),
+            (_label("Sell price", "secondary"), self.sell_field),
+            (self._combo_sell_label, self.combo_sell_field),
+            (self._expected_label, self._expected),
             (self._sell_tax_label, self._sell_tax),
             (_label("Net sale", "secondary"), self._net),
             (self._profit_label, self._profit),
@@ -77,39 +119,44 @@ class SummaryPanel(QWidget):
         layout.addSpacing(8)
         layout.addLayout(grid)
         layout.addStretch(1)
+        self._show_combo(False)
+
+    def focus_chain(self) -> list[QWidget]:
+        return [self.sell_field, *([self.combo_sell_field] if self._has_combo() else [])]
+
+    def _has_combo(self) -> bool:
+        return self._session is not None and self._session.final_combo_item is not None
+
+    def _show_combo(self, visible: bool) -> None:
+        for widget in (self._combo_sell_label, self.combo_sell_field):
+            widget.setVisible(visible)
 
     def set_session(self, session: CraftSession | None) -> None:
         self._session = session
-        self._sell.setText(
-            "" if session is None or session.sell_price is None else f"{session.sell_price:,}"
-        )
+        self.sell_field.show_price(None if session is None else session.sell_price)
+        self.combo_sell_field.show_price(None if session is None else session.combo_sell_price)
+        self._show_combo(self._has_combo())
         self.refresh()
 
-    def _sell_edited(self) -> None:
+    def _price_edited(
+        self,
+        field: _PriceField,
+        name: str,
+        setter: Callable[[CraftSession, int | None], None],
+    ) -> None:
         if self._session is None:
             return
+        before = (self._session.sell_price, self._session.combo_sell_price)
         try:
-            price = parse_kinah(self._sell.text())
-            if price != self._session.sell_price:
-                self._session.set_sell_price(price)
-                changed = True
-            else:
-                changed = False
+            price = parse_kinah(field.text())
+            setter(self._session, price)
         except ValueError:
-            self._sell.setProperty("invalid", True)
-            _restyle(self._sell)
-            self.message.emit("Sell price must be a Kinah amount, e.g. 2,500,000")
+            field.set_invalid(True)
+            self.message.emit(f"{name} must be a Kinah amount, e.g. 2,500,000")
             return
-        self._sell.setProperty("invalid", False)
-        _restyle(self._sell)
-        if price is not None:
-            self._sell.setText(f"{price:,}")
-        if changed:
+        field.show_price(price)
+        if (self._session.sell_price, self._session.combo_sell_price) != before:
             self.changed.emit()
-
-    @property
-    def sell_field(self) -> QLineEdit:
-        return self._sell
 
     def refresh(self) -> None:
         session = self._session
@@ -118,12 +165,14 @@ class SummaryPanel(QWidget):
                 self._craft_total,
                 self._buy_tax,
                 self._total,
+                self._expected,
                 self._sell_tax,
                 self._net,
                 self._profit,
             ):
                 value.setText(DASH)
             self._warnings.setText("")
+            self._warnings.setVisible(False)
             return
         settings = session.settings
         cost = session.cost()
@@ -136,26 +185,31 @@ class SummaryPanel(QWidget):
         self._warnings.setText("\n".join(f"! {w}" for w in warnings))
         self._warnings.setVisible(bool(warnings))
 
+        combo = self._has_combo()
+        rate = session.tiers[-1].combo_rate
+        self._expected_label.setText("Expected sale" if combo else "Sale")
+        self._expected_label.setToolTip(
+            f"{100 - rate * 100:g}% at the sell price, {rate * 100:g}% at the Splendent price "
+            "(the top tier's combo chance)"
+            if combo
+            else ""
+        )
         sale = session.sale()
         if sale is None:
-            self._sell_tax.setText(DASH)
-            self._net.setText(DASH)
-            self._profit.setText(DASH)
+            for value in (self._expected, self._sell_tax, self._net, self._profit):
+                value.setText(DASH)
             self._profit_label.setText("Profit")
             self._profit.setProperty("tone", "muted")
+            self._profit_hint.setText("Enter a sell price")
             self._profit_hint.setVisible(True)
         else:
+            self._expected.setText(kinah(sale.gross))
             self._sell_tax.setText(f"{MINUS}{kinah(sale.tax)}" if round(sale.tax) else "0")
             self._net.setText(kinah(sale.net))
             loss = round(sale.profit) < 0
             self._profit_label.setText("Loss" if loss else "Profit")
             self._profit.setText(signed_kinah(sale.profit))
             self._profit.setProperty("tone", "danger" if loss else "positive")
-            self._profit_hint.setVisible(False)
+            self._profit_hint.setText("Average over many crafts; one craft gives one or the other.")
+            self._profit_hint.setVisible(combo)
         _restyle(self._profit)
-
-
-def _divider() -> QFrame:
-    line = QFrame()
-    line.setProperty("role", "divider")
-    return line
