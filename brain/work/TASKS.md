@@ -32,9 +32,6 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 
 ## Owner questions (TBD)
 - [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)
-- [ ] **(owner)** Sheet E35 sums only E31:E33, leaving out Ultimate Refining Stone and Enhanced
-      Thick Balaur (~1.09M with tax). Formula mistake, or left out on purpose? (App includes them;
-      Incl. can exclude.)
 - [ ] **(owner)** Default buy/sell tax rates (10% each?)
 
 ## Bugs

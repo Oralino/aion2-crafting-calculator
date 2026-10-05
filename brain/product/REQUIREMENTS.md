@@ -31,9 +31,9 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 - **Lost value:** failures and non-combo results (about 75% of successes) have no value, but their
   materials are spent. Their share of each tier's cost is shown as "lost", and all of it counts in
   the cost of the final item and its profit.
-- **Per-material exclusion:** a material can be excluded from the cost sum. The sheet does this on
-  purpose for the top tier (Artisan's Ultimate Refining stone and Enhanced Thick Balaur are left
-  out). Reason: TBD (owner).
+- **Per-material exclusion:** every material in the recipe counts by default; the user can exclude
+  one (e.g. already owned) with Incl. (The sheet's top-tier formula skipped two materials; the app
+  follows aion2hub's recipe instead, owner 2026-10-05.)
 - Total = sum of all tiers, then tax (see Owner decisions).
 - Some materials have no market price (shown as `-` in the sheet), e.g. Diamond Decoration, Odyle.
   They're treated as 0 cost unless a price is entered.
@@ -71,7 +71,8 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 - Hotkey capture first; automated scan later as an opt-in (ban risk accepted only as opt-in).
 - Recipes scraped from a community database rather than entered by hand.
 - English client; multiple resolutions.
-- The top-tier exclusions in the sheet are intentional.
+- **Recipes follow aion2hub**: all listed materials count by default; the owner reports any recipe
+  that looks wrong in game (2026-10-05). This replaces the sheet's top-tier exclusions.
 - **Failed crafts use up the lower tier's Splendent item** (2026-10-05).
 - **Global grades** are Common, Rare, Epic and Unique (gold); there is no Heroic on Global
   (2026-10-05).
@@ -86,8 +87,9 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
   recipe source.
 
 ## Acceptance criteria (MVP)
-- Given the sheet's Accessories prices, chances, exclusions and tax, the cost follows the rules above
-  (the sheet's own totals are lower because it treated failures as free).
+- Given the sheet's Accessories (Diamond Earrings) prices, chances and tax, the cost follows the rules
+  above (the sheet's own totals are lower: it treated failures as free and skipped two top-tier
+  materials).
 - A hotkey capture of an auction house search reads names, unit prices and quantities correctly on the
   test screenshots at every supported resolution.
 - Captured prices appear in the calculator and in price history without manual entry.
@@ -99,5 +101,4 @@ Non-English clients, macOS/Linux, a web version, accounts or a backend, real-mon
 ## Open decisions
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
   Default until decided: lowest unit price, with a warning.
-- **Why the top-tier exclusions:** already owned, bought elsewhere, or something else. TBD (owner).
 - **Supported resolutions list:** TBD (needs owner screenshots).
