@@ -94,6 +94,10 @@ and `1,428` / `25,320` with thousands separators.
   mastery and components are one recipe: the lowest grade is the normal result, the next grade the
   combo result. Each faction (Elyos/Asmodian) has its own item ids, paired in id order. Groups that
   don't fit (more than two grades, uneven counts) are reported as warnings, not guessed.
+  Pairing goes by name (the combo name keeps every word of the normal one), grade only as a sanity
+  check, since the top tier's two items share a grade. A second pass pairs "Splendent <name>" with
+  "<name>" even when aion2hub shows the Splendent with a different, smaller recipe (e.g. Splendent
+  Dark Dragon Lord Boots); in game it's the combo result (owner), so that page's recipe is dropped.
 - **Tier chains:** a recipe that uses a combo item as a component is the next tier of the recipe
   that combos into it (Star Dragon Lord ← Artisan's ← Expert's ← base), confirmed against the
   owner's in-game screenshots of the Ruby Necklace chain (2026-10-05).

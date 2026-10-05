@@ -8536,7 +8536,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110130096,
    "kr_tw_only": true
   },
   {
@@ -8573,49 +8573,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130096,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130097,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110130097,
    "kr_tw_only": false
   },
   {
@@ -8648,7 +8606,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110130100,
    "kr_tw_only": true
   },
   {
@@ -8685,49 +8643,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130100,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130101,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110130101,
    "kr_tw_only": false
   },
   {
@@ -8768,7 +8684,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110130104,
    "kr_tw_only": false
   },
   {
@@ -8809,65 +8725,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130104,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110130105,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110130105,
    "kr_tw_only": false
   },
   {
@@ -8904,7 +8762,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110130108,
    "kr_tw_only": true
   },
   {
@@ -8941,33 +8799,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110130108,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110130109,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110130109,
    "kr_tw_only": true
   },
   {
@@ -9094,7 +8926,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110130118,
    "kr_tw_only": true
   },
   {
@@ -9131,33 +8963,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110130118,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110130119,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110130119,
    "kr_tw_only": true
   },
   {
@@ -10547,7 +10353,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110230096,
    "kr_tw_only": true
   },
   {
@@ -10584,49 +10390,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230096,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230097,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110230097,
    "kr_tw_only": false
   },
   {
@@ -10659,7 +10423,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110230100,
    "kr_tw_only": true
   },
   {
@@ -10696,49 +10460,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230100,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230101,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110230101,
    "kr_tw_only": false
   },
   {
@@ -10779,7 +10501,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110230104,
    "kr_tw_only": false
   },
   {
@@ -10820,65 +10542,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230104,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110230105,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110230105,
    "kr_tw_only": false
   },
   {
@@ -10915,7 +10579,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110230108,
    "kr_tw_only": true
   },
   {
@@ -10952,33 +10616,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110230108,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110230109,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110230109,
    "kr_tw_only": true
   },
   {
@@ -11105,7 +10743,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110230118,
    "kr_tw_only": true
   },
   {
@@ -11142,33 +10780,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110230118,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110230119,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110230119,
    "kr_tw_only": true
   },
   {
@@ -12558,7 +12170,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110330096,
    "kr_tw_only": true
   },
   {
@@ -12595,49 +12207,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330096,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330097,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110330097,
    "kr_tw_only": false
   },
   {
@@ -12670,7 +12240,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110330100,
    "kr_tw_only": true
   },
   {
@@ -12707,49 +12277,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330100,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330101,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110330101,
    "kr_tw_only": false
   },
   {
@@ -12790,7 +12318,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110330104,
    "kr_tw_only": false
   },
   {
@@ -12831,65 +12359,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330104,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110330105,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110330105,
    "kr_tw_only": false
   },
   {
@@ -12926,7 +12396,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110330108,
    "kr_tw_only": true
   },
   {
@@ -12963,33 +12433,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110330108,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110330109,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110330109,
    "kr_tw_only": true
   },
   {
@@ -13116,7 +12560,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110330118,
    "kr_tw_only": true
   },
   {
@@ -13153,33 +12597,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110330118,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110330119,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110330119,
    "kr_tw_only": true
   },
   {
@@ -14569,7 +13987,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110430096,
    "kr_tw_only": true
   },
   {
@@ -14606,49 +14024,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430096,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430097,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610650017,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110430097,
    "kr_tw_only": false
   },
   {
@@ -14681,7 +14057,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110430100,
    "kr_tw_only": true
   },
   {
@@ -14718,49 +14094,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430100,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430101,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610650017,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110430101,
    "kr_tw_only": false
   },
   {
@@ -14801,7 +14135,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110430104,
    "kr_tw_only": false
   },
   {
@@ -14842,65 +14176,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430104,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610650017,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110430105,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610650017,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110430105,
    "kr_tw_only": false
   },
   {
@@ -14937,7 +14213,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110430108,
    "kr_tw_only": true
   },
   {
@@ -14974,33 +14250,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110430108,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110430109,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110430109,
    "kr_tw_only": true
   },
   {
@@ -15127,7 +14377,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110430118,
    "kr_tw_only": true
   },
   {
@@ -15164,33 +14414,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110430118,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110430119,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110430119,
    "kr_tw_only": true
   },
   {
@@ -16580,7 +15804,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110530096,
    "kr_tw_only": true
   },
   {
@@ -16617,49 +15841,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530096,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530097,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610660036,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110530097,
    "kr_tw_only": false
   },
   {
@@ -16692,7 +15874,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110530100,
    "kr_tw_only": true
   },
   {
@@ -16729,49 +15911,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530100,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530101,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610660036,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110530101,
    "kr_tw_only": false
   },
   {
@@ -16812,7 +15952,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110530104,
    "kr_tw_only": false
   },
   {
@@ -16853,65 +15993,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530104,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610660036,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110530105,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610660036,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110530105,
    "kr_tw_only": false
   },
   {
@@ -16948,7 +16030,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110530108,
    "kr_tw_only": true
   },
   {
@@ -16985,33 +16067,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110530108,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110530109,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110530109,
    "kr_tw_only": true
   },
   {
@@ -17138,7 +16194,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110530118,
    "kr_tw_only": true
   },
   {
@@ -17175,33 +16231,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110530118,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110530119,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110530119,
    "kr_tw_only": true
   },
   {
@@ -18591,7 +17621,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110630096,
    "kr_tw_only": true
   },
   {
@@ -18628,49 +17658,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630096,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630097,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610660034,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110630097,
    "kr_tw_only": false
   },
   {
@@ -18703,7 +17691,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110630100,
    "kr_tw_only": true
   },
   {
@@ -18740,49 +17728,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630100,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630101,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610660034,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110630101,
    "kr_tw_only": false
   },
   {
@@ -18823,7 +17769,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110630104,
    "kr_tw_only": false
   },
   {
@@ -18864,65 +17810,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630104,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610660034,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110630105,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610660034,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110630105,
    "kr_tw_only": false
   },
   {
@@ -18959,7 +17847,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110630108,
    "kr_tw_only": true
   },
   {
@@ -18996,33 +17884,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110630108,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110630109,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110630109,
    "kr_tw_only": true
   },
   {
@@ -19149,7 +18011,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110630118,
    "kr_tw_only": true
   },
   {
@@ -19186,33 +18048,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110630118,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110630119,
-   "profession": "Alchemy",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110630119,
    "kr_tw_only": true
   },
   {
@@ -20602,7 +19438,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110730096,
    "kr_tw_only": true
   },
   {
@@ -20639,49 +19475,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730096,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730097,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110730097,
    "kr_tw_only": false
   },
   {
@@ -20714,7 +19508,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110730100,
    "kr_tw_only": true
   },
   {
@@ -20751,49 +19545,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730100,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730101,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110730101,
    "kr_tw_only": false
   },
   {
@@ -20834,7 +19586,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110730104,
    "kr_tw_only": false
   },
   {
@@ -20875,65 +19627,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730104,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110730105,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110730105,
    "kr_tw_only": false
   },
   {
@@ -20970,7 +19664,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110730108,
    "kr_tw_only": true
   },
   {
@@ -21007,33 +19701,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110730108,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110730109,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110730109,
    "kr_tw_only": true
   },
   {
@@ -21160,7 +19828,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110730118,
    "kr_tw_only": true
   },
   {
@@ -21197,33 +19865,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110730118,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110730119,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110730119,
    "kr_tw_only": true
   },
   {
@@ -22613,7 +21255,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110830096,
    "kr_tw_only": true
   },
   {
@@ -22650,49 +21292,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830096,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830097,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610650017,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110830097,
    "kr_tw_only": false
   },
   {
@@ -22725,7 +21325,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110830100,
    "kr_tw_only": true
   },
   {
@@ -22762,49 +21362,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830100,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830101,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610650017,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 110830101,
    "kr_tw_only": false
   },
   {
@@ -22845,7 +21403,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110830104,
    "kr_tw_only": false
   },
   {
@@ -22886,65 +21444,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830104,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610650017,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 110830105,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610730024,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610650017,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 110830105,
    "kr_tw_only": false
   },
   {
@@ -22981,7 +21481,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110830108,
    "kr_tw_only": true
   },
   {
@@ -23018,33 +21518,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110830108,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110830109,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110830109,
    "kr_tw_only": true
   },
   {
@@ -23171,7 +21645,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110830118,
    "kr_tw_only": true
   },
   {
@@ -23208,33 +21682,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110830118,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110830119,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110830119,
    "kr_tw_only": true
   },
   {
@@ -24624,7 +23072,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110930096,
    "kr_tw_only": true
   },
   {
@@ -24657,33 +23105,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930096,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     1000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930097,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     5000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110930097,
    "kr_tw_only": true
   },
   {
@@ -24716,7 +23138,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 110930100,
    "kr_tw_only": true
   },
   {
@@ -24749,33 +23171,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930100,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     1000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930101,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     5000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110930101,
    "kr_tw_only": true
   },
   {
@@ -24808,7 +23204,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 110930104,
    "kr_tw_only": true
   },
   {
@@ -24841,33 +23237,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930104,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     10000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930105,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     10000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110930105,
    "kr_tw_only": true
   },
   {
@@ -24904,7 +23274,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 110930108,
    "kr_tw_only": true
   },
   {
@@ -24941,33 +23311,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930108,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930109,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110930109,
    "kr_tw_only": true
   },
   {
@@ -25094,7 +23438,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 110930118,
    "kr_tw_only": true
   },
   {
@@ -25131,33 +23475,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930118,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 110930119,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 110930119,
    "kr_tw_only": true
   },
   {
@@ -26479,7 +24797,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 115030094,
    "kr_tw_only": true
   },
   {
@@ -26516,49 +24834,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030094,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030095,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 115030095,
    "kr_tw_only": false
   },
   {
@@ -26591,7 +24867,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 115030098,
    "kr_tw_only": true
   },
   {
@@ -26628,49 +24904,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030098,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710006,
-     11
-    ],
-    [
-     610511013,
-     4
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030099,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710007,
-     15
-    ],
-    [
-     610511014,
-     5
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 115030099,
    "kr_tw_only": false
   },
   {
@@ -26711,7 +24945,7 @@
      9
     ]
    ],
-   "combo": null,
+   "combo": 115030102,
    "kr_tw_only": false
   },
   {
@@ -26752,65 +24986,7 @@
      9
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030102,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 115030103,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     2
-    ],
-    [
-     610710008,
-     21
-    ],
-    [
-     610511015,
-     7
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     3
-    ]
-   ],
-   "combo": null,
+   "combo": 115030103,
    "kr_tw_only": false
   },
   {
@@ -26847,7 +25023,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 115030106,
    "kr_tw_only": true
   },
   {
@@ -26884,33 +25060,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 115030106,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 115030107,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     30000000
-    ]
-   ],
-   "combo": null,
+   "combo": 115030107,
    "kr_tw_only": true
   },
   {
@@ -27037,7 +25187,7 @@
      15
     ]
    ],
-   "combo": null,
+   "combo": 115030116,
    "kr_tw_only": true
   },
   {
@@ -27074,33 +25224,7 @@
      15
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 115030116,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 115030117,
-   "profession": "Blacksmithing",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     50000000
-    ]
-   ],
-   "combo": null,
+   "combo": 115030117,
    "kr_tw_only": true
   },
   {
@@ -28151,7 +26275,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210130110,
    "kr_tw_only": true
   },
   {
@@ -28188,49 +26312,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     8
-    ],
-    [
-     610511013,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130111,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     10
-    ],
-    [
-     610511014,
-     4
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210130111,
    "kr_tw_only": false
   },
   {
@@ -28263,7 +26345,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210130114,
    "kr_tw_only": true
   },
   {
@@ -28300,49 +26382,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     8
-    ],
-    [
-     610511013,
-     3
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130115,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     10
-    ],
-    [
-     610511014,
-     4
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210130115,
    "kr_tw_only": false
   },
   {
@@ -28383,7 +26423,7 @@
      6
     ]
    ],
-   "combo": null,
+   "combo": 210130118,
    "kr_tw_only": false
   },
   {
@@ -28424,65 +26464,7 @@
      6
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     14
-    ],
-    [
-     610511015,
-     5
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210130119,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     14
-    ],
-    [
-     610511015,
-     5
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210130119,
    "kr_tw_only": false
   },
   {
@@ -28519,7 +26501,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210130122,
    "kr_tw_only": true
   },
   {
@@ -28556,33 +26538,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210130122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210130123,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210130123,
    "kr_tw_only": true
   },
   {
@@ -28709,7 +26665,7 @@
      10
     ]
    ],
-   "combo": null,
+   "combo": 210130132,
    "kr_tw_only": true
   },
   {
@@ -28746,33 +26702,7 @@
      10
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210130132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210130133,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210130133,
    "kr_tw_only": true
   },
   {
@@ -29831,7 +27761,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 210230109,
    "kr_tw_only": true
   },
   {
@@ -29868,49 +27798,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     6
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     7
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210230110,
    "kr_tw_only": false
   },
   {
@@ -29943,7 +27831,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 210230113,
    "kr_tw_only": true
   },
   {
@@ -29980,49 +27868,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     6
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     7
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210230114,
    "kr_tw_only": false
   },
   {
@@ -30063,7 +27909,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210230117,
    "kr_tw_only": false
   },
   {
@@ -30104,65 +27950,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     10
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210230118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     10
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210230118,
    "kr_tw_only": false
   },
   {
@@ -30199,7 +27987,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210230121,
    "kr_tw_only": true
   },
   {
@@ -30236,33 +28024,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210230121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210230122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210230122,
    "kr_tw_only": true
   },
   {
@@ -30389,7 +28151,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 210230131,
    "kr_tw_only": true
   },
   {
@@ -30426,33 +28188,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210230131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210230132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210230132,
    "kr_tw_only": true
   },
   {
@@ -31511,7 +29247,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210330109,
    "kr_tw_only": true
   },
   {
@@ -31548,49 +29284,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210330110,
    "kr_tw_only": false
   },
   {
@@ -31623,7 +29317,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210330113,
    "kr_tw_only": true
   },
   {
@@ -31660,49 +29354,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210330114,
    "kr_tw_only": false
   },
   {
@@ -31743,7 +29395,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 210330117,
    "kr_tw_only": false
   },
   {
@@ -31784,65 +29436,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210330118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210330118,
    "kr_tw_only": false
   },
   {
@@ -31879,7 +29473,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210330121,
    "kr_tw_only": true
   },
   {
@@ -31916,33 +29510,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210330121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210330122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210330122,
    "kr_tw_only": true
   },
   {
@@ -32069,7 +29637,7 @@
      6
     ]
    ],
-   "combo": null,
+   "combo": 210330131,
    "kr_tw_only": true
   },
   {
@@ -32106,33 +29674,7 @@
      6
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210330131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210330132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210330132,
    "kr_tw_only": true
   },
   {
@@ -33191,7 +30733,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210430109,
    "kr_tw_only": true
   },
   {
@@ -33228,49 +30770,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210430110,
    "kr_tw_only": false
   },
   {
@@ -33303,7 +30803,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210430113,
    "kr_tw_only": true
   },
   {
@@ -33340,49 +30840,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210430114,
    "kr_tw_only": false
   },
   {
@@ -33423,7 +30881,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 210430117,
    "kr_tw_only": false
   },
   {
@@ -33464,65 +30922,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210430118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210430118,
    "kr_tw_only": false
   },
   {
@@ -33559,7 +30959,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210430121,
    "kr_tw_only": true
   },
   {
@@ -33596,33 +30996,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210430121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210430122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210430122,
    "kr_tw_only": true
   },
   {
@@ -33749,7 +31123,7 @@
      6
     ]
    ],
-   "combo": null,
+   "combo": 210430131,
    "kr_tw_only": true
   },
   {
@@ -33786,33 +31160,7 @@
      6
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210430131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210430132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210430132,
    "kr_tw_only": true
   },
   {
@@ -34871,7 +32219,7 @@
      2
     ]
    ],
-   "combo": null,
+   "combo": 210530109,
    "kr_tw_only": true
   },
   {
@@ -34908,49 +32256,7 @@
      2
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     4
-    ],
-    [
-     610511013,
-     1
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     5
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210530110,
    "kr_tw_only": false
   },
   {
@@ -34983,7 +32289,7 @@
      2
     ]
    ],
-   "combo": null,
+   "combo": 210530113,
    "kr_tw_only": true
   },
   {
@@ -35020,49 +32326,7 @@
      2
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     4
-    ],
-    [
-     610511013,
-     1
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     5
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210530114,
    "kr_tw_only": false
   },
   {
@@ -35103,7 +32367,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210530117,
    "kr_tw_only": false
   },
   {
@@ -35144,65 +32408,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     7
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210530118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     7
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210530118,
    "kr_tw_only": false
   },
   {
@@ -35239,7 +32445,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210530121,
    "kr_tw_only": true
   },
   {
@@ -35276,33 +32482,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210530121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210530122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210530122,
    "kr_tw_only": true
   },
   {
@@ -35429,7 +32609,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210530131,
    "kr_tw_only": true
   },
   {
@@ -35466,33 +32646,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210530131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210530132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210530132,
    "kr_tw_only": true
   },
   {
@@ -36551,7 +33705,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210630109,
    "kr_tw_only": true
   },
   {
@@ -36588,49 +33742,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210630110,
    "kr_tw_only": false
   },
   {
@@ -36663,7 +33775,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210630113,
    "kr_tw_only": true
   },
   {
@@ -36700,49 +33812,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     5
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     6
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210630114,
    "kr_tw_only": false
   },
   {
@@ -36783,7 +33853,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 210630117,
    "kr_tw_only": false
   },
   {
@@ -36824,65 +33894,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210630118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     9
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210630118,
    "kr_tw_only": false
   },
   {
@@ -36919,7 +33931,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210630121,
    "kr_tw_only": true
   },
   {
@@ -36956,33 +33968,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210630121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210630122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210630122,
    "kr_tw_only": true
   },
   {
@@ -37109,7 +34095,7 @@
      6
     ]
    ],
-   "combo": null,
+   "combo": 210630131,
    "kr_tw_only": true
   },
   {
@@ -37146,33 +34132,7 @@
      6
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210630131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210630132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210630132,
    "kr_tw_only": true
   },
   {
@@ -38231,7 +35191,7 @@
      2
     ]
    ],
-   "combo": null,
+   "combo": 210730109,
    "kr_tw_only": true
   },
   {
@@ -38268,49 +35228,7 @@
      2
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730109,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     4
-    ],
-    [
-     610511013,
-     1
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730110,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     5
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210730110,
    "kr_tw_only": false
   },
   {
@@ -38343,7 +35261,7 @@
      2
     ]
    ],
-   "combo": null,
+   "combo": 210730113,
    "kr_tw_only": true
   },
   {
@@ -38380,49 +35298,7 @@
      2
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730113,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     4
-    ],
-    [
-     610511013,
-     1
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730114,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710010,
-     5
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610620016,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 210730114,
    "kr_tw_only": false
   },
   {
@@ -38463,7 +35339,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210730117,
    "kr_tw_only": false
   },
   {
@@ -38504,65 +35380,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730117,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     7
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 210730118,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610710011,
-     7
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610620016,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 210730118,
    "kr_tw_only": false
   },
   {
@@ -38599,7 +35417,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 210730121,
    "kr_tw_only": true
   },
   {
@@ -38636,33 +35454,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210730121,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210730122,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     15000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210730122,
    "kr_tw_only": true
   },
   {
@@ -38789,7 +35581,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 210730131,
    "kr_tw_only": true
   },
   {
@@ -38826,33 +35618,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210730131,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 210730132,
-   "profession": "Tailoring",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     25000000
-    ]
-   ],
-   "combo": null,
+   "combo": 210730132,
    "kr_tw_only": true
   },
   {
@@ -39911,7 +36677,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 310130111,
    "kr_tw_only": true
   },
   {
@@ -39948,49 +36714,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130111,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     7
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130112,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     10
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610660036,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310130112,
    "kr_tw_only": false
   },
   {
@@ -40023,7 +36747,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 310130115,
    "kr_tw_only": true
   },
   {
@@ -40060,49 +36784,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130115,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     7
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130116,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     10
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610660036,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310130116,
    "kr_tw_only": false
   },
   {
@@ -40143,7 +36825,7 @@
      7
     ]
    ],
-   "combo": null,
+   "combo": 310130119,
    "kr_tw_only": false
   },
   {
@@ -40184,65 +36866,7 @@
      7
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130119,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     13
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610660036,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310130120,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     13
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610660036,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 310130120,
    "kr_tw_only": false
   },
   {
@@ -40279,7 +36903,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 310130123,
    "kr_tw_only": true
   },
   {
@@ -40316,33 +36940,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310130123,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310130124,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310130124,
    "kr_tw_only": true
   },
   {
@@ -40469,7 +37067,7 @@
      10
     ]
    ],
-   "combo": null,
+   "combo": 310130133,
    "kr_tw_only": true
   },
   {
@@ -40506,33 +37104,7 @@
      10
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310130133,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310130134,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310130134,
    "kr_tw_only": true
   },
   {
@@ -41583,7 +38155,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 310230113,
    "kr_tw_only": true
   },
   {
@@ -41620,49 +38192,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230113,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     6
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230114,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     8
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610660035,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310230114,
    "kr_tw_only": false
   },
   {
@@ -41695,7 +38225,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 310230117,
    "kr_tw_only": true
   },
   {
@@ -41732,49 +38262,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230117,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610710009,
-     6
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230118,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     8
-    ],
-    [
-     610511014,
-     3
-    ],
-    [
-     610660035,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310230118,
    "kr_tw_only": false
   },
   {
@@ -41815,7 +38303,7 @@
      5
     ]
    ],
-   "combo": null,
+   "combo": 310230121,
    "kr_tw_only": false
   },
   {
@@ -41856,65 +38344,7 @@
      5
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230121,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     11
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610660035,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310230122,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     11
-    ],
-    [
-     610511015,
-     4
-    ],
-    [
-     610660035,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 310230122,
    "kr_tw_only": false
   },
   {
@@ -41951,7 +38381,7 @@
      4
     ]
    ],
-   "combo": null,
+   "combo": 310230125,
    "kr_tw_only": true
   },
   {
@@ -41988,33 +38418,7 @@
      4
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310230125,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310230126,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310230126,
    "kr_tw_only": true
   },
   {
@@ -42141,7 +38545,7 @@
      8
     ]
    ],
-   "combo": null,
+   "combo": 310230135,
    "kr_tw_only": true
   },
   {
@@ -42178,33 +38582,7 @@
      8
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310230135,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310230136,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310230136,
    "kr_tw_only": true
   },
   {
@@ -43255,7 +39633,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 310330113,
    "kr_tw_only": true
   },
   {
@@ -43292,49 +39670,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330113,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     4
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330114,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610660034,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310330114,
    "kr_tw_only": false
   },
   {
@@ -43367,7 +39703,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 310330117,
    "kr_tw_only": true
   },
   {
@@ -43404,49 +39740,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330117,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730022,
-     4
-    ],
-    [
-     610511013,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330118,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610730023,
-     6
-    ],
-    [
-     610511014,
-     2
-    ],
-    [
-     610660034,
-     1
-    ],
-    [
-     610610016,
-     1
-    ]
-   ],
-   "combo": null,
+   "combo": 310330118,
    "kr_tw_only": false
   },
   {
@@ -43487,7 +39781,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 310330121,
    "kr_tw_only": false
   },
   {
@@ -43528,65 +39822,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330121,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     8
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610660034,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": false
-  },
-  {
-   "item": 310330122,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     610530010,
-     1
-    ],
-    [
-     610730024,
-     8
-    ],
-    [
-     610511015,
-     3
-    ],
-    [
-     610660034,
-     2
-    ],
-    [
-     610610016,
-     2
-    ]
-   ],
-   "combo": null,
+   "combo": 310330122,
    "kr_tw_only": false
   },
   {
@@ -43623,7 +39859,7 @@
      3
     ]
    ],
-   "combo": null,
+   "combo": 310330125,
    "kr_tw_only": true
   },
   {
@@ -43660,33 +39896,7 @@
      3
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310330125,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310330126,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     20000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310330126,
    "kr_tw_only": true
   },
   {
@@ -43813,7 +40023,7 @@
      6
     ]
    ],
-   "combo": null,
+   "combo": 310330135,
    "kr_tw_only": true
   },
   {
@@ -43850,33 +40060,7 @@
      6
     ]
    ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310330135,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
-   "kr_tw_only": true
-  },
-  {
-   "item": 310330136,
-   "profession": "Jewelcrafting",
-   "mastery": null,
-   "ingredients": [
-    [
-     930100030,
-     35000000
-    ]
-   ],
-   "combo": null,
+   "combo": 310330136,
    "kr_tw_only": true
   },
   {

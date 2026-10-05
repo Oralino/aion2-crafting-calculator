@@ -14,7 +14,7 @@ next tier of the recipe that combos into it (Star Dragon Lord ← Artisan's ← 
 import json
 from collections import defaultdict
 from collections.abc import Iterable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from aion2calc.data.aion2hub import RecipePage
@@ -183,6 +183,7 @@ def build_catalog(pages: Iterable[RecipePage]) -> tuple[Catalog, list[str]]:
         for normal, combo in pairs:
             recipes.append(Recipe(normal, profession, mastery, ingredients, combo, kr_tw_only))
 
+    recipes = _pair_splendent_by_name(recipes, items)
     catalog = Catalog(items, recipes)
     for recipe in catalog.recipes.values():
         try:
@@ -220,6 +221,35 @@ def _pair(group: list[RecipePage]) -> tuple[list[tuple[int, int | None]], str | 
         # Each faction has its own ids; they're numbered in the same order for both items.
         pairs += zip(names[name], names[combo_name], strict=True)
     return sorted(pairs), None
+
+
+def _pair_splendent_by_name(recipes: list[Recipe], items: dict[int, Item]) -> list[Recipe]:
+    """Second pass: aion2hub lists some top-tier Splendent items (e.g. Splendent Dark Dragon Lord
+    Boots) with a different, smaller recipe than their normal item, so the component match misses
+    them. In game they're the normal recipe's 25% combo result (owner, 2026-10-05), so pair
+    "Splendent <name>" with "<name>" by name, per faction in id order, and drop its own recipe."""
+    unpaired: dict[str, list[Recipe]] = defaultdict(list)
+    for recipe in sorted(recipes, key=lambda r: r.item_id):
+        if recipe.combo_item_id is None:
+            unpaired[items[recipe.item_id].name].append(recipe)
+    combos: dict[int, int] = {}
+    for name, normal in unpaired.items():
+        splendent = unpaired.get(f"Splendent {name}", [])
+        if not splendent or len(splendent) != len(normal):
+            continue
+        n_grade, s_grade = items[normal[0].item_id].grade, items[splendent[0].item_id].grade
+        same_job = {r.profession for r in normal + splendent} == {normal[0].profession}
+        if not same_job or n_grade not in GRADES or s_grade not in GRADES:
+            continue
+        if GRADES.index(s_grade) < GRADES.index(n_grade):
+            continue
+        combos.update((n.item_id, c.item_id) for n, c in zip(normal, splendent, strict=True))
+    dropped = set(combos.values())
+    return [
+        replace(r, combo_item_id=combos[r.item_id]) if r.item_id in combos else r
+        for r in recipes
+        if r.item_id not in dropped
+    ]
 
 
 def _by_name(pages: Iterable[RecipePage]) -> dict[str, list[int]]:

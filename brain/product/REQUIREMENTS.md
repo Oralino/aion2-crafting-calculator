@@ -75,6 +75,9 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 - **Failed crafts use up the lower tier's Splendent item** (2026-10-05).
 - **Global grades** are Common, Rare, Epic and Unique (gold); there is no Heroic on Global
   (2026-10-05).
+- **Combo rate is 25% for every weapon and accessory recipe** (2026-10-05); it stays editable.
+- Top-tier "Splendent" items (e.g. Splendent Dark Dragon Lord Boots) are the 25% combo result of
+  their normal recipe, even where aion2hub lists a separate recipe for them (2026-10-05).
 - **Recipe source: aion2hub.com HTML pages**, scraped at dev time, throttled, for personal use
   (2026-10-05). Its `/api/` is disallowed by robots.txt and is not used.
 - **Craft chance** is the in-game proficiency success rate (shown in the crafting panel). A
@@ -94,7 +97,6 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 Non-English clients, macOS/Linux, a web version, accounts or a backend, real-money trading.
 
 ## Open decisions
-- **Combo rate:** is 25% the same for every recipe? (All four Ruby Necklace tiers show 25%.)
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
   Default until decided: lowest unit price, with a warning.
 - **Why the top-tier exclusions:** already owned, bought elsewhere, or something else. TBD (owner).

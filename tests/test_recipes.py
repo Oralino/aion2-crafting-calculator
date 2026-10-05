@@ -159,3 +159,28 @@ def test_top_tier_combo_shares_the_grade() -> None:
     assert warnings == []
     assert catalog.recipes[1].combo_item_id == 2
     assert 2 not in catalog.recipes
+
+
+def test_splendent_with_its_own_recipe_pairs_by_name() -> None:
+    # aion2hub shows the top-tier Splendent with a smaller, different recipe.
+    pages = [
+        page(1, "Dark Dragon Lord Boots", "Unique", 60, STONE, FINE),
+        page(2, "Dark Dragon Lord Boots", "Unique", 60, STONE, FINE),
+        page(3, "Splendent Dark Dragon Lord Boots", "Unique", 60, PURE),
+        page(4, "Splendent Dark Dragon Lord Boots", "Unique", 60, PURE),
+    ]
+    catalog, warnings = build_catalog(pages)
+    assert warnings == []
+    assert catalog.recipes[1].combo_item_id == 3
+    assert catalog.recipes[2].combo_item_id == 4
+    assert 3 not in catalog.recipes and 4 not in catalog.recipes
+
+
+def test_name_pairing_needs_matching_faction_counts() -> None:
+    pages = [
+        page(1, "Dark Dragon Lord Boots", "Unique", 60, STONE),
+        page(3, "Splendent Dark Dragon Lord Boots", "Unique", 60, PURE),
+        page(4, "Splendent Dark Dragon Lord Boots", "Unique", 60, PURE),
+    ]
+    catalog, _ = build_catalog(pages)
+    assert catalog.recipes[1].combo_item_id is None

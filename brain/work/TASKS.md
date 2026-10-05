@@ -32,11 +32,10 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 
 ## Owner questions (TBD)
 - [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)
-- [ ] **(owner)** Why are two top-tier materials (Ultimate Refining Stone, Enhanced Thick Balaur) excluded from the sum?
+- [ ] **(owner)** Sheet E35 sums only E31:E33, leaving out Ultimate Refining Stone and Enhanced
+      Thick Balaur (~1.09M with tax). Formula mistake, or left out on purpose? (App includes them;
+      Incl. can exclude.)
 - [ ] **(owner)** Default buy/sell tax rates (10% each?)
-- [ ] **(owner)** Some top-tier "Splendent" items have their own smaller recipe on aion2hub (e.g.
-      Splendent Dark Dragon Lord Boots: Tanned Hard Balaur Leather 6, Wrathful Will 3, ...), not a
-      combo of the normal recipe. What is that craft in game? They're listed as separate recipes.
 
 ## Bugs
 None open.
