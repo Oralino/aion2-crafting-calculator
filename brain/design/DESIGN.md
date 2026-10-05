@@ -60,18 +60,18 @@ Contrast ratios are WCAG 2.x, computed against the surface they're used on.
 Bright `#FFD700` is **not used**. The source caps saturation; one gold keeps the accent meaningful.
 
 ### Tier grades
-Global's item grades, lowest first: Common (grey), Rare (green), Epic (blue), Unique (gold in game).
-There's no Heroic on Global (owner, 2026-10-05). A tier takes the colour of its normal result's grade
-(Ruby Necklace Common → Expert's Rare → Artisan's Epic → Star Dragon Lord Unique).
-Used only for the tier marker, tier name label and recipe-picker grade label, never as fills.
-**Unique is orange here, although the game shows it gold,** so it can't be mistaken for the
-interactive gold accent (rule approved with this draft).
+Global's item grades, lowest first: Common (grey), Rare (green), Epic (blue), Unique (yellow), as in
+the game. There's no Heroic on Global and no orange grade (owner, 2026-10-05). A tier takes the
+colour of its normal result's grade (Ruby Necklace Common → Expert's Rare → Artisan's Epic → Star
+Dragon Lord Unique). Used only for the tier marker, tier name label and recipe-picker grade label,
+never as fills. `tier.unique` is a bright lemon yellow, clearly lighter and more saturated than the
+muted `accent` gold; the grade name beside it is what identifies it.
 | Token | Hex | on `surface` | on `raised` |
 |---|---|---|---|
 | `tier.common` | `#9E9E9E` | 6.5:1 | 5.8:1 |
 | `tier.rare` | `#5DBB63` | 7.3:1 | 6.5:1 |
 | `tier.epic` | `#5B9BE6` | 6.0:1 | 5.4:1 |
-| `tier.unique` | `#E07B39` | 5.9:1 | 5.2:1 |
+| `tier.unique` | `#F2D43D` | 11.8:1 | 10.5:1 |
 
 ### Status
 | Token | Hex | on `surface` | on `raised` | Use |
