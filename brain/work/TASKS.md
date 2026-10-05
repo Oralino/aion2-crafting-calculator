@@ -10,7 +10,8 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 2. [x] `calc/`: tier cost, needed crafts, exclusions, buy tax; tests reproduce the sheet's Accessories totals
 3. [ ] Recipe importer → `data/recipes.json` (SQLite moves to the price task: it only holds prices,
        history and overrides)
-4. [ ] OCR spike: RapidOCR vs. Tesseract on the fixtures; decide the engine
+4. [~] OCR spike: RapidOCR (English PP-OCRv5) chosen over Windows OCR on crafting screenshots
+       (results in ARCHITECTURE.md); confirm on auction house screenshots when they arrive
 5. [ ] OCR pipeline: panel detection across resolutions, row parsing, name matching
 6. [ ] Hotkey capture → price_observation
 7. [ ] DESIGN.md draft (design-advisor), then the main window: recipe/tier view with prices

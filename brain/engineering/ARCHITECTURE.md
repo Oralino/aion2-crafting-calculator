@@ -1,13 +1,14 @@
 # ARCHITECTURE.md
 How the app works. What it must do is in `../product/REQUIREMENTS.md`.
-Status: planned. Nothing below is built yet; update this file as code lands.
+Status: built so far: `calc/` and `data/` (recipe import). Everything else is planned; update this
+file as code lands.
 
 ## Stack
 - Python 3.13, PySide6 (Qt) for the UI.
-- SQLite (stdlib `sqlite3`) for prices, history and recipes.
-- OCR: OpenCV for preprocessing + an OCR engine, **TBD**: RapidOCR (pip-only, no system install,
-  easiest to ship) vs. Tesseract (needs its own installer). Decide by benchmarking on fixture
-  screenshots.
+- SQLite (stdlib `sqlite3`) for prices, history and overrides (recipes are JSON, see Storage).
+- OCR: **RapidOCR** (`rapidocr` + `onnxruntime`, Apache-2.0 / MIT) with its English PP-OCRv5 mobile
+  recognition model; OpenCV (headless build) for preprocessing. Chosen in the OCR spike (below);
+  to be confirmed on auction house screenshots.
 - Packaging: PyInstaller, one-folder `.exe` build.
 - Dev: pytest, ruff (lint + format), mypy.
 
@@ -50,6 +51,24 @@ next to the `.exe`.
 - Name matching: OCR text is fuzzy-matched to known item names; low-confidence matches are flagged,
   not silently stored.
 
+### OCR spike (2026-10-05)
+Run on the owner's 4 crafting-window screenshots (same game font as the auction house; no AH
+screenshots yet), scoring 58 hand-checked strings: item names, `195/4`-style counts, levels, stats,
+and `1,428` / `25,320` with thousands separators.
+| Engine | Score | Time per full screenshot | Notes |
+|---|---|---|---|
+| RapidOCR, default (Chinese+English) model | 56/58 | 0.8 s | Icons read as stray CJK characters |
+| **RapidOCR, English PP-OCRv5 mobile** | **55/58** | **0.75 s** | No stray characters; 7.9 MB model |
+| Windows built-in OCR (`Windows.Media.Ocr`) | 39/58 (50/58 at 2× upscale) | 0.05–0.12 s | Misses many numbers (`1,428`, `0/14`, `25,320`) |
+- Every RapidOCR miss was a scoring artefact: `Lv.25` read without the space, and text the tooltip
+  hides on screen. Treat all of them as reads of visible text.
+- **Risk for the AH:** neighbouring numbers merge (`161 ▾197` → `161197`). Read the price and quantity
+  columns as separate crops, never a whole row at once.
+- Small fixes to plan for: `l`/`i` confusion in prose (`materlals`), optional spaces (`Lv.25`).
+  Prices are digits and commas only, so parse with a strict pattern and reject anything else.
+- Size: rapidocr 32 MB (most of it optional models; we need ~18 MB), onnxruntime 46 MB, OpenCV
+  113 MB (the headless build is smaller). Packaging should exclude unused models.
+- Tesseract not tested: it needs its own installer, which the shared `.exe` should avoid.
 ## Recipe data
 - **Source:** aion2hub.com crafting-calculator pages (owner decision). `tools/import_recipes.py`
   reads the sitemap, fetches each page at 1 request/second with an identifying user agent, caches
