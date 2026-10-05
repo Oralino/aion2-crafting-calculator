@@ -10,7 +10,8 @@ it's shared with as a packaged `.exe`.
 
 Starting point: the owner's Google Sheet
 (<https://docs.google.com/spreadsheets/d/1G_dSqPojs0LzykVN5gjSZu5Af8wJaLuvagsPUaw2QqQ>), tabs
-"Accessories" and "Weapon WIP". The app replaces it; its calculation rules are below.
+"Accessories" (the reference) and "Weapon WIP" (ignored: weapon recipes will come from the owner's
+list or the recipe source). The app replaces it; its calculation rules are below.
 
 ## Calculation rules (from the sheet)
 - A craft is a **tier chain**: Grey ×64 → Green ×16 → Blue ×4 → Legendary ×1. Each tier has its own
@@ -54,10 +55,11 @@ Starting point: the owner's Google Sheet
 - Recipes scraped from a community database rather than entered by hand.
 - English client; multiple resolutions.
 - The Legendary-tier exclusions in the sheet are intentional.
+- Weapon crafting is left out of the sheet reference; weapon recipes come from the owner's list or the
+  recipe source.
 
 ## Acceptance criteria (MVP)
-- Reproduces the sheet's totals for the Accessories and Weapon recipes given the same prices, chances,
-  exclusions and tax.
+- Reproduces the sheet's Accessories totals given the same prices, chances, exclusions and tax.
 - A hotkey capture of an auction house search reads names, unit prices and quantities correctly on the
   test screenshots at every supported resolution.
 - Captured prices appear in the calculator and in price history without manual entry.
@@ -69,8 +71,8 @@ Non-English clients, macOS/Linux, a web version, accounts or a backend, real-mon
 ## Open decisions
 - **Recipe data source:** which community database, how complete its recipes and craft chances are,
   and whether its terms allow scraping. Fallback: hand-entered JSON.
-- **Weapon WIP sheet extras:** the second price column (E), the "splendant" 1,000,000 line and the
-  final ×2. TBD (owner).
+- **Tier relationship:** whether lower-tier items are consumed by the next tier (an upgrade chain) or
+  are separate crafts. Decides how "buy vs. craft per tier" works.
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
   Default until decided: lowest unit price, with a warning.
 - **Why the Legendary exclusions:** already owned, bought elsewhere, or something else. TBD (owner).
