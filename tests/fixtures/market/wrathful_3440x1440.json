@@ -1,0 +1,8 @@
+{
+  "source": "Market > Exchange > Main, search \"Wrathful\", 3440x1440, listings panel crop (x 370-3440, y 250-1290 of the full screen), 2026-10-05",
+  "rows": [
+    {"name": "Wrathful Mind", "listings": 39, "lowest_price": 999990},
+    {"name": "Wrathful Will", "listings": 44, "lowest_price": 249998},
+    {"name": "Wrathful Ego", "listings": 15, "lowest_price": 1850000}
+  ]
+}

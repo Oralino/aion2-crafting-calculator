@@ -1,0 +1,9 @@
+{
+  "source": "Market > Exchange > Main, search \"Refining Stone\", 3440x1440, listings panel crop (x 370-3440, y 250-1290 of the full screen), 2026-10-05",
+  "rows": [
+    {"name": "Artisan's Ultimate Refining Stone", "listings": 73, "lowest_price": 279999},
+    {"name": "Artisan's Refining Stone", "listings": 56, "lowest_price": 649998},
+    {"name": "Expert's Refining Stone", "listings": 130, "lowest_price": 95000},
+    {"name": "Refining Stone", "listings": 55, "lowest_price": 3999}
+  ]
+}

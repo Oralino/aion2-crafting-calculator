@@ -77,6 +77,24 @@ and `1,428` / `25,320` with thousands separators.
 - Size: rapidocr 32 MB (most of it optional models; we need ~18 MB), onnxruntime 46 MB, OpenCV
   113 MB (the headless build is smaller). Packaging should exclude unused models.
 - Tesseract not tested: it needs its own installer, which the shared `.exe` should avoid.
+
+### Market screen findings (2026-10-05, owner's 3440×1440 captures)
+- The price source is **Market → Exchange → Main**: a search lists one row per matching item with
+  Grade, Item name, **Sales List** (number of listings) and **Lowest Sale Price** (a coin icon,
+  then the number). One search prices several materials (e.g. all four Refining Stone grades).
+  The header also shows "Current Tax Rate 10%".
+- Prices under 10,000 have no thousands separator (`3999`, `6999`); larger ones do (`1,850,000`).
+- **RapidOCR misreads this font's digits with full confidence**: `3999` → `666`, `6999` → `6669`,
+  `999,990` → `066'666`, even with column crops. Item names were always read correctly.
+- **Digit template matching reads every number correctly**: white glyphs are segmented by column
+  (the gold coin icon is taller and dropped; a short glyph between digits is a comma), each digit
+  normalised to 12×18 and matched to templates learned from known captures. Learned from two
+  captures, it read an unseen third (`999,990`, `249,998`, `1,850,000`, counts) with no errors.
+- **Decision:** RapidOCR for item names; glyph template matching for prices and listing counts.
+  Templates ship with the app. Still to verify: other resolutions (glyph size changes; matching
+  normalises size, but thin strokes may differ) and equipment rows.
+- Test captures: `tests/fixtures/market/*_3440x1440.png` (listings panel crops only, no personal
+  information) with the expected rows in matching `.json` files.
 ## Recipe data
 - **Source:** aion2hub.com crafting-calculator pages (owner decision). `tools/import_recipes.py`
   reads the sitemap, fetches each page at 1 request/second with an identifying user agent, caches

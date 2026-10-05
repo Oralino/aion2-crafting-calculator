@@ -1,0 +1,9 @@
+{
+  "source": "Market > Exchange > Main, search \"Pure Ruby Gemstone\", 3440x1440, listings panel crop (x 370-3440, y 250-1290 of the full screen), 2026-10-05",
+  "rows": [
+    {"name": "Radiant Ruby Gemstone", "listings": 30, "lowest_price": 68990},
+    {"name": "Pure Ruby Gemstone", "listings": 40, "lowest_price": 6999},
+    {"name": "Fine Ruby Gemstone", "listings": 33, "lowest_price": 600},
+    {"name": "Ruby Gemstone", "listings": 11, "lowest_price": 1544}
+  ]
+}
