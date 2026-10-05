@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build
+build/
+dist/
+*.spec
+
+# Local
+.env
+.env.*
+private/
+*.sqlite3
+*.db
+brain/work/HANDOFF.md
+.claude/settings.local.json
