@@ -138,6 +138,20 @@ class Catalog:
         return cls.from_json(path.read_text(encoding="utf-8"))
 
 
+def searchable_recipes(catalog: Catalog, include_kr_tw: bool = False) -> dict[str, int]:
+    """Recipe picker entries, "Name · Grade" → item id, sorted by name. Faction copies of a recipe
+    share a name, so each name appears once (lowest id). KR/TW-only recipes are left out unless
+    asked for."""
+    entries: dict[str, int] = {}
+    for item_id in sorted(catalog.recipes):
+        if catalog.recipes[item_id].kr_tw_only and not include_kr_tw:
+            continue
+        item = catalog.items.get(item_id)
+        name = catalog.name(item_id)
+        entries.setdefault(f"{name} · {item.grade}" if item and item.grade else name, item_id)
+    return dict(sorted(entries.items(), key=lambda entry: entry[0].lower()))
+
+
 def build_catalog(pages: Iterable[RecipePage]) -> tuple[Catalog, list[str]]:
     """Group pages into recipes. Returns the catalog and warnings about anything it couldn't pair.
 

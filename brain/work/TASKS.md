@@ -14,10 +14,18 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
        (results in ARCHITECTURE.md); confirm on auction house screenshots when they arrive
 5. [ ] OCR pipeline: panel detection across resolutions, row parsing, name matching
 6. [ ] Hotkey capture → price_observation
-7. [ ] DESIGN.md draft (design-advisor), then the main window: recipe/tier view with prices
+7. [x] DESIGN.md (approved) and the main window: recipe search, tier blocks, summary with profit,
+       settings (taxes)
 8. [ ] Buy vs. craft per tier, profit vs. sell price
 9. [ ] Price history view
 10. [ ] PyInstaller `.exe` build and README install steps
+
+## UI follow-ups
+- [ ] **(owner)** OK to download Inter + JetBrains Mono (OFL) to bundle? Until then: Segoe UI/Consolas
+- [ ] Save manual prices and per-recipe inputs (with the SQLite price store, task 6)
+- [ ] Recipe picker: grade colours and match highlighting in the popup
+- [ ] A rejected price edit closes the editor and drops what was typed; keep it open, marked invalid
+- [ ] Prices tab (price history), once capture exists
 
 ## Later
 - [ ] Automated scan (opt-in, ToS/anti-cheat warning)

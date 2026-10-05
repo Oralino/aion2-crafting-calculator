@@ -1,7 +1,7 @@
 # ARCHITECTURE.md
 How the app works. What it must do is in `../product/REQUIREMENTS.md`.
-Status: built so far: `calc/` and `data/` (recipe import). Everything else is planned; update this
-file as code lands.
+Status: built so far: `calc/`, `data/` (recipe import), `session.py` and the main window in `ui/`.
+Capture, OCR and the SQLite store are planned; update this file as code lands.
 
 ## Stack
 - Python 3.13, PySide6 (Qt) for the UI.
@@ -15,8 +15,9 @@ file as code lands.
 ## Components (`src/aion2calc/`)
 | Package | Responsibility |
 |---|---|
-| `app.py` | Entry point; builds the Qt app and main window. |
-| `ui/` | Recipe/tier view (the sheet's blocks), prices, history, settings. No business logic. |
+| `app.py` | Entry point; applies the theme, loads `data/recipes.json` and settings, opens the window. |
+| `session.py` | The open craft (Qt-free): a recipe chain plus the user's prices, chances, combo rates, exclusions and sell price, validated, turned into `calc` objects. Combo items made by the tier below are CRAFTED (cost 0). |
+| `ui/` | Widgets only, reading and editing a `CraftSession`: `theme.py` (all design tokens, QPalette and generated QSS), `format.py` (number display/parsing), `tier_block.py` (tier header + material table model and delegates), `summary.py`, `recipe_search.py`, `settings_page.py`, `settings_store.py` (QSettings, validated on load), `main_window.py`. |
 | `capture/` | Global hotkey; grabs the game window or screen region. Later: automated scan. |
 | `ocr/` | Locate the listing area, preprocess, run OCR, parse rows, match names to known items. |
 | `data/` | aion2hub page parser (`aion2hub.py`), recipe catalog and tier chains (`recipes.py`); later the SQLite store. |
@@ -38,8 +39,11 @@ calc reads latest prices + recipes + user overrides → ui shows tiers, totals, 
 Recipes and items are **not** in SQLite: they're read-only game data, about 1,700 recipes, loaded from
 `data/recipes.json` into memory (see Recipe data). SQLite holds what the user creates:
 - `price_observation(item_id, unit_price, qty, observed_at, source)`; source = `ocr` or `manual`
-- `user_setting` / overrides: per-material price override and exclusion, per-tier chance override,
-  buy/sell tax.
+- per-recipe inputs: chances, combo rates, exclusions, sell price (until then they live only in the
+  open `CraftSession`; manual prices carry over between recipes in one run).
+
+Buy/sell tax are already remembered via `QSettings` (Windows registry,
+`HKCU\Software\Aion2CraftingCalculator`).
 
 The database lives in the user's app-data folder (`%LOCALAPPDATA%\Aion2CraftingCalculator\`), not
 next to the `.exe`.

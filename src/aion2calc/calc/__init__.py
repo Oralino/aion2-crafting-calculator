@@ -10,6 +10,7 @@ from aion2calc.calc.cost import (
     craft_cost,
     required_successes,
 )
+from aion2calc.calc.profit import Sale, sale
 
 __all__ = [
     "DEFAULT_COMBO_RATE",
@@ -20,4 +21,6 @@ __all__ = [
     "TierCost",
     "craft_cost",
     "required_successes",
+    "Sale",
+    "sale",
 ]
