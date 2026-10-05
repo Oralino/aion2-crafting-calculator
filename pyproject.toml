@@ -24,6 +24,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"aion2calc.ui" = ["fonts/*.ttf", "fonts/*.txt"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py313"

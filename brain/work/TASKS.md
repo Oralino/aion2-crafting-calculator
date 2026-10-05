@@ -21,7 +21,6 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 10. [ ] PyInstaller `.exe` build and README install steps
 
 ## UI follow-ups
-- [ ] **(owner)** OK to download Inter + JetBrains Mono (OFL) to bundle? Until then: Segoe UI/Consolas
 - [ ] Save manual prices and per-recipe inputs (with the SQLite price store, task 6)
 - [ ] Recipe picker: grade colours and match highlighting in the popup
 - [ ] A rejected price edit closes the editor and drops what was typed; keep it open, marked invalid
@@ -35,9 +34,13 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 - [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)
 - [ ] **(owner)** Why are two top-tier materials (Ultimate Refining Stone, Enhanced Thick Balaur) excluded from the sum?
 - [ ] **(owner)** Default buy/sell tax rates (10% each?)
+- [ ] **(owner)** Some top-tier "Splendent" items have their own smaller recipe on aion2hub (e.g.
+      Splendent Dark Dragon Lord Boots: Tanned Hard Balaur Leather 6, Wrathful Will 3, ...), not a
+      combo of the normal recipe. What is that craft in game? They're listed as separate recipes.
 
 ## Bugs
 None open.
 
 ## Done
 - [x] Project setup: docs in `brain/`, agents, tooling (2026-10-05)
+- [x] Bundled fonts Inter + JetBrains Mono (2026-10-05)

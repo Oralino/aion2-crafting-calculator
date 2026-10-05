@@ -14,6 +14,11 @@ python -m venv .venv
 ```
 Tests and checks are listed in `CLAUDE.md` (Commands).
 
+## Credits
+Fonts: [Inter](https://github.com/rsms/inter) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono),
+both under the SIL Open Font License 1.1 (licence files in `src/aion2calc/ui/fonts/`). Recipe data
+from [aion2hub.com](https://aion2hub.com).
+
 ## Note
 Hotkey capture only reads your screen. A future automated-scan mode would send input to the game,
 which may break the game's terms of service; it will be opt-in.

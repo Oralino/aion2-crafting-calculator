@@ -9,6 +9,10 @@ Capture, OCR and the SQLite store are planned; update this file as code lands.
 - OCR: **RapidOCR** (`rapidocr` + `onnxruntime`, Apache-2.0 / MIT) with its English PP-OCRv5 mobile
   recognition model; OpenCV (headless build) for preprocessing. Chosen in the OCR spike (below);
   to be confirmed on auction house screenshots.
+- Fonts: Inter 4.1 (Regular/Medium/SemiBold) and JetBrains Mono 2.304 (Regular/SemiBold) static
+  TTFs in `src/aion2calc/ui/fonts/` with their OFL 1.1 licence files, registered at startup
+  (`theme.load_fonts`); downloaded from the projects' GitHub releases (owner OK, 2026-10-05).
+  Segoe UI / Consolas are fallbacks. The licence files must ship with the `.exe`.
 - Packaging: PyInstaller, one-folder `.exe` build.
 - Dev: pytest, ruff (lint + format), mypy.
 

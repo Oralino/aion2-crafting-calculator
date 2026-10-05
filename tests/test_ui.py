@@ -148,3 +148,9 @@ def test_settings_store_ignores_bad_values(tmp_path: Path) -> None:
     assert load_settings(stored) == Settings()
     save_settings(Settings(buy_tax=0.05, sell_tax=0.0), stored)
     assert load_settings(stored) == Settings(buy_tax=0.05, sell_tax=0.0)
+
+
+def test_bundled_fonts_load(window: MainWindow) -> None:
+    families = theme.load_fonts()
+    assert "Inter" in families
+    assert "JetBrains Mono" in families

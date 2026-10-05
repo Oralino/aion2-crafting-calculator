@@ -3,8 +3,14 @@
 The QSS sheet and QPalette are generated from these; widgets never hard-code hex values.
 """
 
-from PySide6.QtGui import QColor, QFont, QPalette
+from pathlib import Path
+
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QColor, QFont, QFontDatabase, QPalette
 from PySide6.QtWidgets import QApplication
+
+FONTS_DIR = Path(__file__).parent / "fonts"
+"""Inter and JetBrains Mono static TTFs, SIL Open Font License 1.1 (licence files alongside)."""
 
 # Surfaces and borders
 BG_APP = "#000000"
@@ -41,7 +47,7 @@ POSITIVE = "#4FC3A1"
 WARNING = "#F0D875"
 DANGER = "#EF6B6B"
 
-# Fonts: Inter and JetBrains Mono per DESIGN.md once bundled; Windows fallbacks until then.
+# Bundled fonts first, Windows fallbacks if they fail to load.
 UI_FONTS = ["Inter", "Segoe UI"]
 MONO_FONTS = ["JetBrains Mono", "Consolas"]
 
@@ -162,9 +168,18 @@ QFrame[role="divider"] {{ background: {BORDER_SUBTLE}; max-height: 1px; min-heig
 """
 
 
-def apply(app: QApplication) -> None:
-    from PySide6.QtCore import Qt
+def load_fonts() -> list[str]:
+    """Register the bundled fonts; returns the families Qt loaded."""
+    families: set[str] = set()
+    for path in sorted(FONTS_DIR.glob("*.ttf")):
+        font_id = QFontDatabase.addApplicationFont(str(path))
+        if font_id >= 0:
+            families.update(QFontDatabase.applicationFontFamilies(font_id))
+    return sorted(families)
 
+
+def apply(app: QApplication) -> None:
+    load_fonts()
     app.setStyle("Fusion")
     app.styleHints().setColorScheme(Qt.ColorScheme.Dark)  # dark title bar on light-mode Windows
     app.setPalette(palette())
