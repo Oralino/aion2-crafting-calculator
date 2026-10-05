@@ -1,0 +1,12 @@
+{
+  "source": "Market > Exchange > Main, search \"star dragon\", 3440x1440, listings panel crop (x 370-3440, y 250-1290 of the full screen), 2026-10-05. Equipment rows have an 'Item Level' second line; rows with 0 listings are dimmed and show price 0 (no price); the last row is cut off by scrolling.",
+  "rows": [
+    {"name": "Star Dragon Lord Ring", "listings": 1, "lowest_price": 33333333},
+    {"name": "Splendent Star Dragon Lord Ring", "listings": 5, "lowest_price": 47999999},
+    {"name": "Star Dragon Lord Greatsword", "listings": 0, "lowest_price": null},
+    {"name": "Splendent Star Dragon Lord Greatsword", "listings": 0, "lowest_price": null},
+    {"name": "Star Dragon Lord Longsword", "listings": 0, "lowest_price": null},
+    {"name": "Splendent Star Dragon Lord Longsword", "listings": 0, "lowest_price": null}
+  ],
+  "partial_rows": ["Star Dragon Lord Dagger"]
+}
