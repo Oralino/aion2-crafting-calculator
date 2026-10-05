@@ -1,8 +1,9 @@
 """Crafting cost of a combo chain: needed crafts per tier, material exclusions and buy-side tax.
 
-A craft is a chain of tiers (e.g. Grey → Green → Blue → Legendary). Each successful craft of a tier
-has a combo chance to produce the next tier's item instead; only combo results matter, so the
-successes needed on a tier = successes needed on the next tier ÷ this tier's combo rate.
+A craft is a chain of tiers (e.g. Ruby Necklace → Expert's → Artisan's → Star Dragon Lord). Each
+successful craft of a tier has a combo chance to produce the "Splendent" item instead, and every
+attempt at the next tier uses up one of those, failed attempts included. So, from the final tier
+down: combo items needed = the next tier's attempts, and successes needed = that ÷ combo rate.
 """
 
 import math
@@ -95,12 +96,16 @@ class CostBreakdown:
 
 
 def required_successes(craft: Craft) -> tuple[float, ...]:
-    """Successful crafts needed per tier, lowest tier first (e.g. 64, 16, 4, 1 at a 25% combo)."""
+    """Successful crafts needed per tier, lowest tier first. With every chance at 100% and a 25%
+    combo this is 64, 16, 4, 1; failures at a tier raise the counts of every tier below it."""
     if not craft.tiers:
         return ()
     needed = [float(craft.target)]
+    upper = craft.tiers[-1]
     for lower in reversed(craft.tiers[:-1]):
-        needed.append(needed[-1] / lower.combo_rate)
+        combo_items = upper.attempts(needed[-1])
+        needed.append(combo_items / lower.combo_rate)
+        upper = lower
     return tuple(reversed(needed))
 
 
@@ -109,14 +114,14 @@ def craft_cost(craft: Craft, buy_tax: float = 0.0) -> CostBreakdown:
     if not (math.isfinite(buy_tax) and buy_tax >= 0):
         raise ValueError(f"buy_tax must be a finite, non-negative fraction, got {buy_tax}")
     successes = required_successes(craft)
-    # Crafts that move up: the next tier's needed successes, or the final items themselves.
-    useful = (*successes[1:], float(craft.target)) if successes else ()
+    attempts = [tier.attempts(n) for tier, n in zip(craft.tiers, successes, strict=True)]
+    # Crafts that move up: the combo items the next tier's attempts use, or the final items.
+    useful = (*attempts[1:], float(craft.target)) if attempts else ()
     tier_costs = []
-    for tier, needed, kept in zip(craft.tiers, successes, useful, strict=True):
-        attempts = tier.attempts(needed)
-        cost = attempts * tier.cost_per_craft
-        lost = cost * (1 - kept / attempts) if attempts else 0.0
-        tier_costs.append(TierCost(tier, needed, attempts, cost, lost))
+    for tier, needed, tries, kept in zip(craft.tiers, successes, attempts, useful, strict=True):
+        cost = tries * tier.cost_per_craft
+        lost = cost * (1 - kept / tries) if tries else 0.0
+        tier_costs.append(TierCost(tier, needed, tries, cost, lost))
     subtotal = sum(t.cost for t in tier_costs)
     lost = sum(t.lost for t in tier_costs)
     tax = subtotal * buy_tax

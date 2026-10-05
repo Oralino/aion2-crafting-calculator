@@ -13,20 +13,26 @@ Starting point: the owner's Google Sheet
 "Accessories" (the reference) and "Weapon WIP" (ignored: weapon recipes will come from the owner's
 list or the recipe source). The app replaces it; its calculation rules are below.
 
-## Calculation rules (from the sheet)
-- A craft is a **combo chain** of tiers: Grey → Green → Blue → Legendary. Each tier has its own
-  materials (Qty per craft × Cost per unit), and different accessories use different materials.
+## Calculation rules
+Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace chain (2026-10-05).
+- A craft is a **combo chain** of recipes, one per tier, named by the grade of their normal result:
+  Common → Rare → Epic → Unique (e.g. Ruby Necklace → Expert's → Artisan's → Star Dragon Lord
+  Necklace). Each tier has its own materials (Qty per craft × Cost per unit), and different
+  accessories use different materials. (The sheet called the tiers Grey/Green/Blue/Legendary.)
 - **Combo:** a successful craft has a combo chance (25% by default, editable per tier) to produce the
-  next tier's item. Only combo results count. So successes needed on a tier = successes needed on the
-  next tier ÷ combo rate, from the final target (default 1) down: 1 → 4 → 16 → 64. The sheet's
-  64/16/4/1 are these averages, not inputs.
-- **Needed crafts** for a tier = successes ÷ craft chance (the in-game proficiency success rate, e.g.
-  `64 / 0.931`). Tier cost = needed crafts × sum of that tier's included material costs.
-- **Lost value:** the non-combo results (about 75% of successes) and failures have no value, but their
+  "Splendent" version instead of the normal item. **Each craft of the next tier uses up one
+  Splendent item from the tier below, and a failed craft uses it up too** (the chain has to restart).
+  Only combo results count; normal results have no value.
+- **Needed crafts**, from the final target (default 1) down: attempts on a tier = successes ÷ craft
+  chance (the in-game proficiency success rate); the tier below must make that many combo items, so
+  its successes = those attempts ÷ combo rate. With no failures this gives the sheet's 64/16/4/1;
+  failures raise every lower tier (the sheet's Accessories: about 73.8/17.5/4.2/1 successes).
+- Tier cost = attempts × sum of that tier's included material costs.
+- **Lost value:** failures and non-combo results (about 75% of successes) have no value, but their
   materials are spent. Their share of each tier's cost is shown as "lost", and all of it counts in
   the cost of the final item and its profit.
 - **Per-material exclusion:** a material can be excluded from the cost sum. The sheet does this on
-  purpose for the Legendary tier (Artisan's Ultimate Refining stone and Enhanced Thick Balaur are left
+  purpose for the top tier (Artisan's Ultimate Refining stone and Enhanced Thick Balaur are left
   out). Reason: TBD (owner).
 - Total = sum of all tiers, then tax (see Owner decisions).
 - Some materials have no market price (shown as `-` in the sheet), e.g. Diamond Decoration, Odyle.
@@ -41,8 +47,8 @@ list or the recipe source). The app replaces it; its calculation rules are below
    overridden by hand.
 4. **Craft chance:** entered per tier from the in-game crafting panel (the recipe source has no
    success rates); the combo rate defaults to 25% and can be changed per tier.
-5. **Buy vs. craft per tier:** for each intermediate (e.g. Blue), compare buying it on the market with
-   crafting it, and use the cheaper path.
+5. **Buy vs. craft per tier:** for each intermediate Splendent item (e.g. Expert's Splendent Ruby
+   Necklace), compare buying it on the market with crafting it, and use the cheaper path.
 6. **Profit:** compare total crafting cost with the finished item's market price.
 7. **Tax, configurable:** separate buy-side tax (applied to material cost, the sheet's ×1.1) and
    sell-side tax (deducted from the sale price in the profit calc). Default 10% each: TBD (owner)
@@ -62,7 +68,10 @@ list or the recipe source). The app replaces it; its calculation rules are below
 - Hotkey capture first; automated scan later as an opt-in (ban risk accepted only as opt-in).
 - Recipes scraped from a community database rather than entered by hand.
 - English client; multiple resolutions.
-- The Legendary-tier exclusions in the sheet are intentional.
+- The top-tier exclusions in the sheet are intentional.
+- **Failed crafts use up the lower tier's Splendent item** (2026-10-05).
+- **Global grades** are Common, Rare, Epic and Unique (gold); there is no Heroic on Global
+  (2026-10-05).
 - **Recipe source: aion2hub.com HTML pages**, scraped at dev time, throttled, for personal use
   (2026-10-05). Its `/api/` is disallowed by robots.txt and is not used.
 - **Craft chance** is the in-game proficiency success rate (shown in the crafting panel). A
@@ -71,7 +80,8 @@ list or the recipe source). The app replaces it; its calculation rules are below
   recipe source.
 
 ## Acceptance criteria (MVP)
-- Reproduces the sheet's Accessories totals given the same prices, chances, exclusions and tax.
+- Given the sheet's Accessories prices, chances, exclusions and tax, the cost follows the rules above
+  (the sheet's own totals are lower because it treated failures as free).
 - A hotkey capture of an auction house search reads names, unit prices and quantities correctly on the
   test screenshots at every supported resolution.
 - Captured prices appear in the calculator and in price history without manual entry.
@@ -81,10 +91,8 @@ list or the recipe source). The app replaces it; its calculation rules are below
 Non-English clients, macOS/Linux, a web version, accounts or a backend, real-money trading.
 
 ## Open decisions
-- **Combo chain details:** does a tier's craft also use up the item the previous tier's combo made?
-  Is the Legendary step the same combo pattern? Is 25% the same for every recipe? These decide how
-  "buy vs. craft per tier" works.
+- **Combo rate:** is 25% the same for every recipe? (All four Ruby Necklace tiers show 25%.)
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
   Default until decided: lowest unit price, with a warning.
-- **Why the Legendary exclusions:** already owned, bought elsewhere, or something else. TBD (owner).
+- **Why the top-tier exclusions:** already owned, bought elsewhere, or something else. TBD (owner).
 - **Supported resolutions list:** TBD (needs owner screenshots).

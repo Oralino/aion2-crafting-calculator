@@ -24,7 +24,7 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 
 ## Owner questions (TBD)
 - [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)
-- [ ] **(owner)** Why are two Legendary materials excluded from the sum?
+- [ ] **(owner)** Why are two top-tier materials (Ultimate Refining Stone, Enhanced Thick Balaur) excluded from the sum?
 - [ ] **(owner)** Default buy/sell tax rates (10% each?)
 
 ## Bugs

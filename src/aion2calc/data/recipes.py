@@ -18,8 +18,9 @@ from pathlib import Path
 
 from aion2calc.data.aion2hub import RecipePage
 
-GRADES = ("Common", "Rare", "Epic", "Unique", "Legendary", "Heroic", "Mythic")
-"""Lowest first. Unknown grades rank after these."""
+GRADES = ("Common", "Rare", "Epic", "Unique")
+"""Global grades, lowest first (owner, 2026-10-05). KR/TW data also has "Heroic", whose rank isn't
+known; groups with any other grade are reported, not paired."""
 
 FORMAT_VERSION = 1
 

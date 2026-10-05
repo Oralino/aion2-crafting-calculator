@@ -1,5 +1,5 @@
 # DESIGN.md
-Visual source of truth, maintained by design-advisor. **Status: draft, awaiting owner approval
+Visual source of truth, maintained by design-advisor. **Status: approved by the owner
 (2026-10-05).** Calculation rules and features live in `../product/REQUIREMENTS.md`; stack in
 `../engineering/ARCHITECTURE.md`.
 
@@ -60,17 +60,18 @@ Contrast ratios are WCAG 2.x, computed against the surface they're used on.
 Bright `#FFD700` is **not used**. The source caps saturation; one gold keeps the accent meaningful.
 
 ### Tier grades
+Global's item grades, lowest first: Common (grey), Rare (green), Epic (blue), Unique (gold in game).
+There's no Heroic on Global (owner, 2026-10-05). A tier takes the colour of its normal result's grade
+(Ruby Necklace Common → Expert's Rare → Artisan's Epic → Star Dragon Lord Unique).
 Used only for the tier marker, tier name label and recipe-picker grade label, never as fills.
-Legendary is orange (not gold) so it can't be mistaken for the interactive accent.
+**Unique is orange here, although the game shows it gold,** so it can't be mistaken for the
+interactive gold accent (rule approved with this draft).
 | Token | Hex | on `surface` | on `raised` |
 |---|---|---|---|
-| `tier.grey` | `#9E9E9E` | 6.5:1 | 5.8:1 |
-| `tier.green` | `#5DBB63` | 7.3:1 | 6.5:1 |
-| `tier.blue` | `#5B9BE6` | 6.0:1 | 5.4:1 |
-| `tier.legendary` | `#E07B39` | 5.9:1 | 5.2:1 |
-
-TODO (owner): confirm the in-game grade names/colours (is the top tier "Legendary" orange or gold in
-the Global client?). If the game uses gold, keep the orange here anyway and note why.
+| `tier.common` | `#9E9E9E` | 6.5:1 | 5.8:1 |
+| `tier.rare` | `#5DBB63` | 7.3:1 | 6.5:1 |
+| `tier.epic` | `#5B9BE6` | 6.0:1 | 5.4:1 |
+| `tier.unique` | `#E07B39` | 5.9:1 | 5.2:1 |
 
 ### Status
 | Token | Hex | on `surface` | on `raised` | Use |
@@ -134,12 +135,13 @@ opacity fade on toasts, and only if trivial to do; otherwise none.
   the table).
 
 ### Tier block (Calculator)
-One block per tier, in chain order Grey → Green → Blue → Legendary. `bg.surface`, radius 6px, 1px
+One block per tier, in chain order Common → Rare → Epic → Unique. `bg.surface`, radius 6px, 1px
 `border.subtle`, 4px left border in the tier colour, padding 12px 16px.
 
 Header row (one line, wraps to two below ~1100px):
-- Left: tier name in `title` coloured with its tier token (`Grey`, `Green`, `Blue`, `Legendary`)
-  plus `Tier 1 of 4` in `caption` `text.secondary`. The name is the non-colour identity.
+- Left: the recipe's name in `title` coloured with its grade token (e.g. `Expert's Ruby Necklace`
+  in `tier.rare`) plus `Tier 2 of 4 · Rare` in `caption` `text.secondary`. The words are the
+  non-colour identity.
 - Inputs: `Chance [ 93.1 %]`, `Combo [ 25.0 %]`, inset 72px-wide fields, `label` before each.
 - Computed: `Successes 16.0` · `Crafts 17.2` (Mono, `text.primary`, labels `text.secondary`).
 - Right: `Tier cost 1,234,567` (Mono 13px/600, primary) and `Lost 925,925` (Mono, `text.secondary`;
@@ -282,8 +284,6 @@ notification or a short sound? (Main session decides the mechanism.)
 - Proportional digits anywhere numbers line up.
 
 ## Open (owner)
-- Approve this draft overall (palette, Legendary in orange, top tabs instead of a sidebar).
-- In-game grade naming/colours (see Tier grades).
 - Stale-price threshold default (suggest 24h).
 - Default capture hotkey.
 - Capture feedback when the app is hidden (notification/sound).

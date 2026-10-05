@@ -5,8 +5,9 @@ import pytest
 
 from aion2calc.calc import Craft, Material, Tier, craft_cost, required_successes
 
-# The owner's Google Sheet, "Accessories" tab. Expected values are the sheet's own results; its
-# 64/16/4/1 counts follow from the default 25% combo rate.
+# The owner's Google Sheet, "Accessories" tab: its prices, chances and exclusions. The sheet itself
+# assumed failed crafts don't use up the lower tier's combo item (64/16/4/1 successes); they do, so
+# every tier below the top needs more. Expected values worked out by hand from the rules.
 ACCESSORIES = Craft(
     "Accessory",
     (
@@ -56,20 +57,30 @@ def tier(cost: int = 100, chance: float | None = None, combo_rate: float = 0.25)
     return Tier("t", (Material("m", 1, cost),), chance=chance, combo_rate=combo_rate)
 
 
-def test_accessories_matches_sheet() -> None:
+def test_accessories_chain() -> None:
     result = craft_cost(ACCESSORIES, buy_tax=0.1)
-    assert [t.successes for t in result.tiers] == [64, 16, 4, 1]
-    assert [t.attempts for t in result.tiers] == pytest.approx(
-        [68.72754368, 16.90725229, 4.13064226, 1.056638028]
+    # Top: 1 / 0.946 = 1.057 attempts, so 1.057 combo items from Blue: 4.227 successes, and so on.
+    assert [t.successes for t in result.tiers] == pytest.approx(
+        [73.79328667, 17.45837476, 4.22655211, 1]
     )
-    expected_costs = [824_730.5241, 2_536_087.843, 5_245_915.67, 2_826_506.724]
+    assert [t.attempts for t in result.tiers] == pytest.approx(
+        [79.24423957, 18.44832167, 4.36459369, 1.05663803]
+    )
+    expected_costs = [950_930.87, 2_767_248.25, 5_543_033.99, 2_826_506.72]
     assert [t.cost for t in result.tiers] == pytest.approx(expected_costs, abs=0.01)
-    assert result.subtotal == pytest.approx(11_433_240.76, abs=0.01)
+    assert result.subtotal == pytest.approx(12_087_719.84, abs=0.01)
+    assert result.total == pytest.approx(13_296_491.82, abs=0.01)
     grey = result.tiers[0]
-    assert grey.lost == pytest.approx(grey.cost * (1 - 16 / 68.72754368))
+    assert grey.lost == pytest.approx(729_551.01, abs=0.01)  # all but the 18.4 Green attempts
     assert result.lost == pytest.approx(sum(t.lost for t in result.tiers))
     assert all(0 <= t.lost <= t.cost for t in result.tiers)
-    assert result.total == pytest.approx(12_576_564.84, abs=0.01)
+
+
+def test_matches_sheet_counts_without_failures() -> None:
+    no_failures = replace(
+        ACCESSORIES, tiers=tuple(replace(t, chance=None) for t in ACCESSORIES.tiers)
+    )
+    assert required_successes(no_failures) == (64, 16, 4, 1)
 
 
 def test_successes_follow_each_tiers_combo_rate() -> None:
@@ -78,12 +89,14 @@ def test_successes_follow_each_tiers_combo_rate() -> None:
     assert required_successes(craft) == pytest.approx((20, 10, 2))
 
 
-def test_lost_value_is_cost_of_crafts_that_dont_move_up() -> None:
+def test_failed_attempts_use_up_combo_items() -> None:
     craft = Craft("c", (tier(cost=100, chance=0.5), tier(cost=1_000, chance=0.5)))
     low, final = craft_cost(craft).tiers
-    # Low: 4 successes / 0.5 = 8 attempts, 1 combo moves up -> 7 of 8 crafts lost.
-    assert low.cost == 800
-    assert low.lost == pytest.approx(700)
+    # Final: 1 success / 0.5 = 2 attempts, each using a combo item from below.
+    # Low: 2 combo items / 0.25 = 8 successes / 0.5 = 16 attempts; 2 move up, 14 lost.
+    assert low.successes == 8
+    assert low.cost == 1_600
+    assert low.lost == pytest.approx(1_400)
     # Final: 1 success / 0.5 = 2 attempts, 1 is the item -> 1 of 2 lost.
     assert final.cost == 2_000
     assert final.lost == pytest.approx(1_000)
