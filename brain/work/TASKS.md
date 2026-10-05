@@ -28,6 +28,8 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 
 ## Later
 - [ ] Automated scan (opt-in, ToS/anti-cheat warning)
+      Finding (2026-10-05): the game ignored simulated mouse clicks and key presses (Windows input
+      injection), likely blocked by anti-cheat. Automated scan probably isn't feasible this way.
 - [ ] Proficiency-based craft chance (success curve by crafting level vs. recipe level)
 
 ## Owner questions (TBD)
