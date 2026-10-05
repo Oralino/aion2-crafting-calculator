@@ -8,7 +8,7 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 ## Next (MVP, in order)
 1. [ ] Research spike (game-data-researcher): community recipe databases, data format, craft chances,
        terms of use → decide the recipe source
-2. [ ] `calc/`: tier cost, needed crafts, exclusions, tax; tests that reproduce the sheet's totals
+2. [x] `calc/`: tier cost, needed crafts, exclusions, buy tax; tests reproduce the sheet's Accessories totals
 3. [ ] Recipe importer → `data/recipes.json` + SQLite schema
 4. [ ] OCR spike: RapidOCR vs. Tesseract on the fixtures; decide the engine
 5. [ ] OCR pipeline: panel detection across resolutions, row parsing, name matching
@@ -22,8 +22,7 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 - [ ] Automated scan (opt-in, ToS/anti-cheat warning)
 
 ## Owner questions (TBD)
-- [ ] **(owner)** Weapon WIP sheet: what are column E prices, the "splendant" 1,000,000 line, and the
-      final ×2?
+- [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)
 - [ ] **(owner)** Why are two Legendary materials excluded from the sum?
 - [ ] **(owner)** Default buy/sell tax rates (10% each?)
 
