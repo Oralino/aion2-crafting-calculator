@@ -14,10 +14,17 @@ Starting point: the owner's Google Sheet
 list or the recipe source). The app replaces it; its calculation rules are below.
 
 ## Calculation rules (from the sheet)
-- A craft is a **tier chain**: Grey ×64 → Green ×16 → Blue ×4 → Legendary ×1. Each tier has its own
-  materials (Qty per craft × Cost per unit).
-- **Needed crafts** for a tier = target count ÷ craft chance (e.g. `64 / 0.931`). Tier cost = needed ×
-  sum of that tier's included material costs.
+- A craft is a **combo chain** of tiers: Grey → Green → Blue → Legendary. Each tier has its own
+  materials (Qty per craft × Cost per unit), and different accessories use different materials.
+- **Combo:** a successful craft has a combo chance (25% by default, editable per tier) to produce the
+  next tier's item. Only combo results count. So successes needed on a tier = successes needed on the
+  next tier ÷ combo rate, from the final target (default 1) down: 1 → 4 → 16 → 64. The sheet's
+  64/16/4/1 are these averages, not inputs.
+- **Needed crafts** for a tier = successes ÷ craft chance (the in-game proficiency success rate, e.g.
+  `64 / 0.931`). Tier cost = needed crafts × sum of that tier's included material costs.
+- **Lost value:** the non-combo results (about 75% of successes) and failures have no value, but their
+  materials are spent. Their share of each tier's cost is shown as "lost", and all of it counts in
+  the cost of the final item and its profit.
 - **Per-material exclusion:** a material can be excluded from the cost sum. The sheet does this on
   purpose for the Legendary tier (Artisan's Ultimate Refining stone and Enhanced Thick Balaur are left
   out). Reason: TBD (owner).
@@ -26,13 +33,14 @@ list or the recipe source). The app replaces it; its calculation rules are below
   They're treated as 0 cost unless a price is entered.
 
 ## MVP features
-1. **Recipes for all craftable items**, imported from a community database (source TBD, see Open
-   decisions). Each tier and material shown like the sheet's blocks.
+1. **Recipes for all craftable items**, imported from aion2hub (see Owner decisions). Each tier and
+   material shown like the sheet's blocks.
 2. **Hotkey OCR capture:** the user searches an item in the auction house, presses a hotkey, and the
    app reads the visible listings (item name, unit price, quantity) and stores them.
 3. **Price rule:** "Cost per" = the **lowest current listing** unit price. Every price can be
    overridden by hand.
-4. **Craft chance:** the recipe data's rate is the default; the user can override it per tier.
+4. **Craft chance:** entered per tier from the in-game crafting panel (the recipe source has no
+   success rates); the combo rate defaults to 25% and can be changed per tier.
 5. **Buy vs. craft per tier:** for each intermediate (e.g. Blue), compare buying it on the market with
    crafting it, and use the cheaper path.
 6. **Profit:** compare total crafting cost with the finished item's market price.
@@ -73,8 +81,9 @@ list or the recipe source). The app replaces it; its calculation rules are below
 Non-English clients, macOS/Linux, a web version, accounts or a backend, real-money trading.
 
 ## Open decisions
-- **Tier relationship:** whether lower-tier items are consumed by the next tier (an upgrade chain) or
-  are separate crafts. Decides how "buy vs. craft per tier" works.
+- **Combo chain details:** does a tier's craft also use up the item the previous tier's combo made?
+  Is the Legendary step the same combo pattern? Is 25% the same for every recipe? These decide how
+  "buy vs. craft per tier" works.
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
   Default until decided: lowest unit price, with a warning.
 - **Why the Legendary exclusions:** already owned, bought elsewhere, or something else. TBD (owner).
