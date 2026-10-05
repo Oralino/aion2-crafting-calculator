@@ -6,8 +6,7 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
       ideally a few searches each, for OCR fixtures
 
 ## Next (MVP, in order)
-1. [ ] Research spike (game-data-researcher): community recipe databases, data format, craft chances,
-       terms of use → decide the recipe source
+1. [x] Research spike: recipe sources → aion2hub HTML (findings in ARCHITECTURE.md)
 2. [x] `calc/`: tier cost, needed crafts, exclusions, buy tax; tests reproduce the sheet's Accessories totals
 3. [ ] Recipe importer → `data/recipes.json` + SQLite schema
 4. [ ] OCR spike: RapidOCR vs. Tesseract on the fixtures; decide the engine
@@ -20,6 +19,7 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
 
 ## Later
 - [ ] Automated scan (opt-in, ToS/anti-cheat warning)
+- [ ] Proficiency-based craft chance (success curve by crafting level vs. recipe level)
 
 ## Owner questions (TBD)
 - [ ] **(owner)** Weapon recipe list (or confirm the recipe source covers weapons)

@@ -55,6 +55,10 @@ list or the recipe source). The app replaces it; its calculation rules are below
 - Recipes scraped from a community database rather than entered by hand.
 - English client; multiple resolutions.
 - The Legendary-tier exclusions in the sheet are intentional.
+- **Recipe source: aion2hub.com HTML pages**, scraped at dev time, throttled, for personal use
+  (2026-10-05). Its `/api/` is disallowed by robots.txt and is not used.
+- **Craft chance** is the in-game proficiency success rate (shown in the crafting panel). A
+  proficiency-based chance curve is a later feature.
 - Weapon crafting is left out of the sheet reference; weapon recipes come from the owner's list or the
   recipe source.
 
@@ -69,8 +73,6 @@ list or the recipe source). The app replaces it; its calculation rules are below
 Non-English clients, macOS/Linux, a web version, accounts or a backend, real-money trading.
 
 ## Open decisions
-- **Recipe data source:** which community database, how complete its recipes and craft chances are,
-  and whether its terms allow scraping. Fallback: hand-entered JSON.
 - **Tier relationship:** whether lower-tier items are consumed by the next tier (an upgrade chain) or
   are separate crafts. Decides how "buy vs. craft per tier" works.
 - **Shortfall rule:** when the cheapest listing has fewer units than needed (need 22, cheapest has 5).
