@@ -18,8 +18,10 @@ Status: planned. Nothing below is built yet; update this file as code lands.
 | `ui/` | Recipe/tier view (the sheet's blocks), prices, history, settings. No business logic. |
 | `capture/` | Global hotkey; grabs the game window or screen region. Later: automated scan. |
 | `ocr/` | Locate the listing area, preprocess, run OCR, parse rows, match names to known items. |
-| `data/` | SQLite store and the recipe importer/scraper. |
-| `calc/` | Pure functions: tier cost, needed crafts, exclusions, buy-vs-craft, profit, tax. |
+| `data/` | aion2hub page parser (`aion2hub.py`), recipe catalog and tier chains (`recipes.py`); later the SQLite store. |
+| `calc/` | Pure functions: combo-chain tier cost, needed crafts, lost value, exclusions, tax; later buy-vs-craft and profit. |
+
+Dev tools live in `tools/` and aren't shipped: `tools/import_recipes.py` rebuilds `data/recipes.json`.
 
 `calc/` and the parsing parts of `ocr/` are pure and unit-tested; `ui/` and `capture/` stay thin.
 
@@ -32,9 +34,8 @@ calc reads latest prices + recipes + user overrides → ui shows tiers, totals, 
 ```
 
 ## Storage (SQLite, planned)
-- `item(id, name, grade, tradable)`
-- `recipe(id, output_item_id, tier, output_qty, base_chance)` and
-  `recipe_material(recipe_id, item_id, qty)`
+Recipes and items are **not** in SQLite: they're read-only game data, about 1,700 recipes, loaded from
+`data/recipes.json` into memory (see Recipe data). SQLite holds what the user creates:
 - `price_observation(item_id, unit_price, qty, observed_at, source)`; source = `ocr` or `manual`
 - `user_setting` / overrides: per-material price override and exclusion, per-tier chance override,
   buy/sell tax.
@@ -50,9 +51,28 @@ next to the `.exe`.
   not silently stored.
 
 ## Recipe data
-- Source **TBD** (see REQUIREMENTS Open decisions). The importer writes a normalized
-  `data/recipes.json` that ships with the app and loads into SQLite; scraping is a dev-time step, not
-  something end users run.
+- **Source:** aion2hub.com crafting-calculator pages (owner decision). `tools/import_recipes.py`
+  reads the sitemap, fetches each page at 1 request/second with an identifying user agent, caches
+  pages in `.cache/aion2hub/` (gitignored), and writes `data/recipes.json`, which ships with the app.
+  Never touches `/api/` (disallowed by robots.txt). Scraping is a dev-time step, not something end
+  users run.
+- **Page format:** Next.js React Server Components payload embedded in the HTML. Rows are
+  `<hex id>:<json>\n`, except text rows `<id>:T<hex byte length>,<text>` which are length-prefixed
+  and followed directly by the next row, and hint rows with an empty id. The parser walks the element
+  tree (`["$", tag, key, props]`, `"$L<id>"` references) rather than rendered HTML. Each page gives:
+  name, grade, profession, mastery level (optional), direct components (item id, name, qty) and a
+  "KR/TW" badge when the recipe is only known from Korea/Taiwan client data.
+- **Combo pairing:** aion2hub has a page for each combo item too (e.g. Splendent Ruby Necklace),
+  repeating the recipe that combos into it, but doesn't link the two. Pages with the same profession,
+  mastery and components are one recipe: the lowest grade is the normal result, the next grade the
+  combo result. Each faction (Elyos/Asmodian) has its own item ids, paired in id order. Groups that
+  don't fit (more than two grades, uneven counts) are reported as warnings, not guessed.
+- **Tier chains:** a recipe that uses a combo item as a component is the next tier of the recipe
+  that combos into it (Star Dragon Lord ← Artisan's ← Expert's ← base), confirmed against the
+  owner's in-game screenshots of the Ruby Necklace chain (2026-10-05).
+- **`recipes.json` format** (versioned, `"format": 1`): `items` (id → name, grade) and `recipes`
+  (item, profession, mastery, ingredients `[[item_id, qty]]`, combo item id, `kr_tw_only`).
+- KR/TW-only recipes are kept but flagged; the UI hides them by default (Global only).
 
 ### Source research (2026-10-05, unverified details marked)
 - **No official or public API** has Global item, recipe or market data. NCSoft's public web API

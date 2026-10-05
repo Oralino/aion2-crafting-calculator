@@ -20,3 +20,6 @@ private/
 *.db
 brain/work/HANDOFF.md
 .claude/settings.local.json
+
+# Recipe import cache
+.cache/

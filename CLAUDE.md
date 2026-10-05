@@ -32,6 +32,8 @@ python -m venv .venv                         # once
 .venv/Scripts/python -m ruff check .         # lint   (ruff check --fix . to autofix)
 .venv/Scripts/python -m ruff format --check . # format check (ruff format . to apply)
 .venv/Scripts/python -m mypy                 # type check (strict)
+.venv/Scripts/python tools/import_recipes.py # rebuild data/recipes.json from aion2hub (~30 min
+                                             # uncached; --limit N to try a few pages)
 ```
 **Check** = pytest + ruff check + ruff format --check + mypy; must pass before every commit.
 Packaging (PyInstaller) is added in a later task; its command goes here then.
