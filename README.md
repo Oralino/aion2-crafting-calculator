@@ -3,6 +3,9 @@
 A Windows desktop app for AION 2 (Global) that works out what a craft really costs and whether it's
 worth doing. It reads auction house (Market) prices straight from your screen.
 
+![The calculator with Star Dragon Lord Bow open: four tiers with their materials, captured
+prices and the cost summary](brain/design/screenshot-calculator.png)
+
 **Status:** first release, [v0.1.0](https://github.com/Oralino/aion2-crafting-calculator/releases/latest).
 Buy vs. craft per tier and a price history view are planned.
 
