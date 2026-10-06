@@ -3,7 +3,8 @@
 A Windows desktop app for AION 2 (Global) that works out what a craft really costs and whether it's
 worth doing. It reads auction house (Market) prices straight from your screen.
 
-**Status:** in development. The calculator and market capture work.
+**Status:** first release, [v0.1.0](https://github.com/Oralino/aion2-crafting-calculator/releases/latest).
+Buy vs. craft per tier and a price history view are planned.
 
 ## Install
 1. Download the latest `Aion2CraftingCalculator-…-windows.zip` from
@@ -21,11 +22,26 @@ No Python or internet connection needed.
 - **Real crafting maths:** your in-game success chance per tier and the 25% combo chance
   needed to reach the next tier. Failed crafts use up the item from the tier below, so the
   lower tiers need more crafts than a simple 64/16/4/1.
+- **Successes and Combos per tier:** how many successful crafts each tier needs and how many
+  Splendent pieces they're expected to give.
 - **Total cost and "lost" value:** what the failed and non-combo crafts cost you.
 - **Profit:** sell price minus total cost after the 10% market tax, counting the 25% chance
   of the Splendent version at the top tier.
+- **Planned crafts:** type how many crafts you'll do on a tier; the tiers below adjust to supply
+  them, with a warning if a planned tier falls short.
+- **Bought Splendent pieces:** give the Splendent piece a tier uses a value (what you paid);
+  the tiers below it are then left out of the cost.
 - **Market capture (F10):** open Market → Exchange in the game, search, press F10. The app
-  reads every listed item's lowest price and fills it in. You can override any price by hand.
+  reads every listed item's lowest price and fills it in. You can type any price by hand; the
+  next capture of that item replaces it, so the newest price always wins. A price is only saved
+  when its name and digits are read clearly; anything unclear is left out, never guessed.
+
+## How to use
+1. Search a recipe at the top (Ctrl+K), e.g. "star dragon necklace".
+2. Enter your in-game craft chance on each tier.
+3. In game, open Market → Exchange, search a material (one search can list several), press F10.
+   Repeat for the other materials and the finished item. Prices you've captured are remembered.
+4. Read the total cost and profit on the right. Hover an input or badge for a short explanation.
 
 ## Privacy
 Capture only reads the AION 2 window, only when it's the active window, and only when you press
@@ -49,7 +65,9 @@ Build the `.exe` (run the tests once first, so RapidOCR's models are downloaded 
 ```bash
 .venv/Scripts/python -m PyInstaller aion2calc.spec --noconfirm --clean
 ```
-The app is in `dist/Aion2CraftingCalculator/`; zip that whole folder to share it.
+The app is in `dist/Aion2CraftingCalculator/`. To publish a version, raise `version` in
+`pyproject.toml`, zip that whole folder as `Aion2CraftingCalculator-vX.Y.Z-windows.zip` and attach
+it to a new GitHub release.
 
 Tests, checks and dev tools are listed in `CLAUDE.md` (Commands). Project docs live in `brain/`.
 
