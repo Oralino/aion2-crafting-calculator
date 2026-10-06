@@ -15,7 +15,12 @@ window in `ui/`, and F10 capture (`capture/`, `ocr/`). Update this file as code 
   TTFs in `src/aion2calc/ui/fonts/` with their OFL 1.1 licence files, registered at startup
   (`theme.load_fonts`); downloaded from the projects' GitHub releases (owner OK, 2026-10-05).
   Segoe UI / Consolas are fallbacks. The licence files must ship with the `.exe`.
-- Packaging: PyInstaller, one-folder `.exe` build.
+- Packaging: PyInstaller (dev dependency), one-folder `.exe` build from `aion2calc.spec`. It
+  bundles `data/recipes.json` (found via `sys._MEIPASS` in `app.py`), the package data (fonts with
+  OFL files, digit templates) and only the three RapidOCR models the app uses, so nothing is
+  downloaded at runtime. It requests administrator rights (`uac_admin`, see risks). OpenCV's video
+  I/O, Qt's software OpenGL and Qt's translations are left out. About 280 MB unzipped, most of it
+  OpenCV (`opencv-python`, pulled in by RapidOCR) and Qt.
 - Dev: pytest, ruff (lint + format), mypy.
 
 ## Components (`src/aion2calc/`)

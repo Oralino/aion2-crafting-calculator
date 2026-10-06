@@ -36,7 +36,11 @@ python -m venv .venv                         # once
                                              # uncached; --limit N to try a few pages)
 ```
 **Check** = pytest + ruff check + ruff format --check + mypy; must pass before every commit.
-Packaging (PyInstaller) is added in a later task; its command goes here then.
+```bash
+.venv/Scripts/python -m PyInstaller aion2calc.spec --noconfirm --clean   # build the .exe
+```
+Output: `dist/Aion2CraftingCalculator/` (one folder; zip it to share). Run Bash from the repo root,
+never `cd` into `dist/`: an open working folder there blocks the next build's cleanup.
 
 ## Conventions
 - Python 3.13, type hints everywhere (mypy strict), ruff for lint and format, line length 100.

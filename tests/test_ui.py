@@ -11,7 +11,7 @@ from pathlib import Path  # noqa: E402
 import pytest  # noqa: E402
 from PySide6.QtCore import QSettings, Qt  # noqa: E402
 from PySide6.QtTest import QTest  # noqa: E402
-from PySide6.QtWidgets import QApplication  # noqa: E402
+from PySide6.QtWidgets import QApplication, QMessageBox  # noqa: E402
 
 from aion2calc.app import RECIPES  # noqa: E402
 from aion2calc.data.prices import PriceStore  # noqa: E402
@@ -296,3 +296,19 @@ def test_approximate_names_are_reported_not_saved(window: MainWindow, catalog: C
     window.apply_reading(MarketReading((row,)))
     assert window._status.text() == "! Not saved, name not recognised exactly: Wrathfull Mind"
     assert window._store.latest_ocr() == {}
+
+
+def test_unexpected_errors_are_logged_and_shown(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import aion2calc.app as app
+
+    shown: list[str] = []
+    monkeypatch.setattr(app, "default_path", lambda: tmp_path / "prices.sqlite3")
+    monkeypatch.setattr(QMessageBox, "critical", lambda _p, _t, text: shown.append(text))
+    try:
+        raise KeyError("boom")
+    except KeyError as error:
+        app._report_error(KeyError, error, error.__traceback__)
+    assert "KeyError: 'boom'" in (tmp_path / "error.log").read_text(encoding="utf-8")
+    assert shown and "error.log" in shown[0]

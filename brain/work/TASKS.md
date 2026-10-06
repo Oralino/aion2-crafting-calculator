@@ -16,8 +16,8 @@ Development tracker. Owner-only items are marked **(owner)**. Detailed history i
        settings (taxes)
 8. [ ] Buy vs. craft per tier, profit vs. sell price
 9. [ ] Price history view
-10. [ ] PyInstaller `.exe` build and README install steps; the `.exe` must run as administrator
-        or F10 doesn't reach it while the game has focus (ARCHITECTURE.md, risks)
+10. [x] PyInstaller `.exe` build (runs as administrator) and README install steps
+11. [ ] **(owner)** Test the `.exe`: start it, open a recipe, F10 in game
 
 ## OCR hardening (from the 2026-10-05 review, not yet done)
 - [ ] Flag a captured price far from the item's previous one (a single misread digit) instead of
