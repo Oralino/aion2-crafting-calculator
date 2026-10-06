@@ -174,6 +174,9 @@ class SummaryPanel(QWidget):
             self._warnings.setText("")
             self._warnings.setVisible(False)
             return
+        for field, combo in ((self.sell_field, False), (self.combo_sell_field, True)):
+            market = session.market_sell_price(combo)
+            field.setPlaceholderText(f"{market:,} (market)" if market is not None else "Kinah")
         settings = session.settings
         cost = session.cost()
         self._buy_tax_label.setText(f"Buy tax ({settings.buy_tax * 100:g}%)")

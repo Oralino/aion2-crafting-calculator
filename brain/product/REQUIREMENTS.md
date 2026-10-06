@@ -27,7 +27,15 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
   chance (the in-game proficiency success rate); the tier below must make that many combo items, so
   its successes = those attempts ÷ combo rate. With no failures this gives the sheet's 64/16/4/1;
   failures raise every lower tier (the sheet's Accessories: about 73.8/17.5/4.2/1 successes).
+- Each tier shows its expected successes and, next to them, its expected combo (Splendent) results
+  = successes × combo rate (owner, 2026-10-05).
 - Tier cost = attempts × sum of that tier's included material costs.
+- **Planned crafts (owner, 2026-10-05):** the user can type how many crafts to do on any tier; that
+  tier uses them, and the tiers below supply one Splendent piece per planned craft. Empty = what
+  the chain needs. The sale counts the items the top tier's crafts are expected to make.
+- **Valued Splendent piece (owner, 2026-10-05):** the Splendent piece a tier uses can be given a
+  value (market price, or what it cost to get). It's then counted at that value and the tiers below
+  it aren't counted, so nothing is paid for twice.
 - **Lost value:** failures and non-combo results (about 75% of successes) have no value, but their
   materials are spent. Their share of each tier's cost is shown as "lost", and all of it counts in
   the cost of the final item and its profit.
@@ -44,7 +52,8 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 2. **Hotkey OCR capture:** the user searches an item in the auction house, presses a hotkey, and the
    app reads the visible listings (item name, unit price, quantity) and stores them.
 3. **Price rule:** "Cost per" = the **lowest current listing** unit price. Every price can be
-   overridden by hand.
+   overridden by hand; the newest price wins, so a capture replaces a typed price (material cost,
+   sell price or Splendent price) for the items it reads (owner, 2026-10-05).
 4. **Craft chance:** entered per tier from the in-game crafting panel (the recipe source has no
    success rates); the combo rate defaults to 25% and can be changed per tier.
 5. **Buy vs. craft per tier:** for each intermediate Splendent item (e.g. Expert's Splendent Ruby

@@ -2,6 +2,7 @@
 
 import math
 import re
+from datetime import datetime, timedelta
 
 MINUS = "−"
 DASH = "—"
@@ -29,6 +30,26 @@ def count(value: float) -> str:
 def percent(fraction: float | None) -> str:
     """A fraction as `93.1%`; empty when not set."""
     return "" if fraction is None else f"{fraction * 100:.1f}%"
+
+
+STALE_AFTER = timedelta(hours=24)
+"""Prices older than this are flagged (DESIGN.md suggests 24h; owner may change it later)."""
+
+
+def age(then: datetime, now: datetime) -> str:
+    """Compact age of a reading: `now`, `12m`, `5h`, `3d`."""
+    seconds = max(0, int((now - then).total_seconds()))
+    if seconds < 60:
+        return "now"
+    if seconds < 3600:
+        return f"{seconds // 60}m"
+    if seconds < 86400:
+        return f"{seconds // 3600}h"
+    return f"{seconds // 86400}d"
+
+
+def is_stale(then: datetime, now: datetime) -> bool:
+    return now - then > STALE_AFTER
 
 
 def parse_kinah(text: str) -> int | None:

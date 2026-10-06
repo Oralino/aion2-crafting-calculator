@@ -95,6 +95,7 @@ def test_failed_attempts_use_up_combo_items() -> None:
     # Final: 1 success / 0.5 = 2 attempts, each using a combo item from below.
     # Low: 2 combo items / 0.25 = 8 successes / 0.5 = 16 attempts; 2 move up, 14 lost.
     assert low.successes == 8
+    assert low.combos == 2  # the 2 combo items the final tier's attempts use
     assert low.cost == 1_600
     assert low.lost == pytest.approx(1_400)
     # Final: 1 success / 0.5 = 2 attempts, 1 is the item -> 1 of 2 lost.
@@ -184,3 +185,40 @@ def test_negative_material_values_rejected(qty: int, price: int) -> None:
 def test_invalid_tax_rejected(tax: float) -> None:
     with pytest.raises(ValueError):
         craft_cost(Craft("c", ()), buy_tax=tax)
+
+
+def test_planned_crafts_set_the_tier_and_feed_the_tiers_below() -> None:
+    craft = Craft("c", (tier(chance=0.5), replace(tier(chance=0.5), crafts=10)))
+    low, top = craft_cost(craft).tiers
+    assert top.attempts == 10
+    assert top.successes == 5  # 10 crafts at 50%
+    # The top's 10 crafts need 10 combo items: 10 / 0.25 = 40 successes / 0.5 = 80 crafts.
+    assert low.attempts == 80
+    assert low.successes == 40
+
+
+def test_planned_lower_tier_stands_alone() -> None:
+    craft = Craft("c", (replace(tier(cost=100), crafts=3), tier(cost=1_000)))
+    low, top = craft_cost(craft).tiers
+    assert (low.attempts, low.cost) == (3, 300)
+    assert top.attempts == 1  # the top tier is still worked out from the target
+    assert 0 <= low.lost <= low.cost  # 3 crafts can't supply the top: no negative "lost"
+
+
+def test_tiers_below_a_bought_piece_cost_nothing() -> None:
+    craft = Craft("c", (tier(cost=100), tier(cost=1_000)), first_tier=1)
+    low, top = craft_cost(craft).tiers
+    assert not low.counted and low.cost == 0 and low.lost == 0
+    assert top.counted and top.cost == 1_000
+    assert craft_cost(craft).subtotal == 1_000
+
+
+@pytest.mark.parametrize("crafts", [-1.0, math.nan, math.inf])
+def test_invalid_planned_crafts_rejected(crafts: float) -> None:
+    with pytest.raises(ValueError):
+        replace(tier(), crafts=crafts)
+
+
+def test_first_tier_out_of_range_rejected() -> None:
+    with pytest.raises(ValueError):
+        Craft("c", (tier(),), first_tier=1)

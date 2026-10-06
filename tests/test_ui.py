@@ -5,6 +5,7 @@ import os
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from collections.abc import Iterator  # noqa: E402
+from dataclasses import replace  # noqa: E402
 from pathlib import Path  # noqa: E402
 
 import pytest  # noqa: E402
@@ -13,7 +14,9 @@ from PySide6.QtTest import QTest  # noqa: E402
 from PySide6.QtWidgets import QApplication  # noqa: E402
 
 from aion2calc.app import RECIPES  # noqa: E402
+from aion2calc.data.prices import PriceStore  # noqa: E402
 from aion2calc.data.recipes import Catalog, searchable_recipes  # noqa: E402
+from aion2calc.ocr.market import MarketReading, MarketRow  # noqa: E402
 from aion2calc.session import Settings, Source  # noqa: E402
 from aion2calc.ui import theme  # noqa: E402
 from aion2calc.ui.main_window import MainWindow  # noqa: E402
@@ -35,7 +38,7 @@ def window(catalog: Catalog, monkeypatch: pytest.MonkeyPatch) -> Iterator[MainWi
     theme.apply(app)
     # Never write the user's real settings from tests.
     monkeypatch.setattr("aion2calc.ui.main_window.save_settings", lambda settings: None)
-    win = MainWindow(catalog, Settings())
+    win = MainWindow(catalog, Settings(), PriceStore(":memory:"))
     win.open_recipe(STAR_DRAGON_LORD_NECKLACE)
     yield win
     win.close()
@@ -81,13 +84,38 @@ def test_rejected_price_reports_and_keeps_old_value(window: MainWindow) -> None:
     assert model.row(index).source is Source.MISSING
 
 
-def test_crafted_combo_item_cannot_be_edited_or_excluded(window: MainWindow) -> None:
+def test_splendent_piece_can_be_valued_and_replaces_lower_tiers(window: MainWindow) -> None:
     model = top(window).model
     crafted = row_of(model, "Artisan's Splendent")
     assert model.row(model.index(crafted, 0)).source is Source.CRAFTED
-    assert not model.flags(model.index(crafted, COST)) & Qt.ItemFlag.ItemIsEditable
-    assert not model.setData(model.index(crafted, COST), "100")
     assert model.data(model.index(crafted, INCL), Qt.ItemDataRole.CheckStateRole) is None
+    assert model.setData(model.index(crafted, COST), "20,000,000")
+    assert model.row(model.index(crafted, 0)).source is Source.VALUED
+    assert window.summary._total.text() == "22,000,000"  # the piece + 10% buy tax, nothing below
+    assert not window.blocks[0]._notice.isHidden()  # lower tiers say they're not counted
+    table = top(window).table
+    table.setCurrentIndex(model.index(crafted, COST))
+    QTest.keyClick(table, Qt.Key.Key_Delete)  # clearing brings the lower tiers back
+    assert model.row(model.index(crafted, 0)).source is Source.CRAFTED
+    assert window.blocks[0]._notice.isHidden()
+
+
+def test_planned_crafts_change_the_tier_and_those_below(window: MainWindow) -> None:
+    block = window.blocks[2]  # Artisan's tier
+    block.crafts.setText("10")
+    block.crafts.editingFinished.emit()
+    assert window.session is not None
+    assert window.session.tiers[2].crafts == 10
+    cost = window.session.cost()
+    assert cost.tiers[2].attempts == 10
+    assert cost.tiers[1].attempts == pytest.approx(40)  # 10 pieces / 25%, chance 100%
+    block.crafts.setText("lots")
+    block.crafts.editingFinished.emit()
+    assert block.crafts.property("invalid") is True
+    block.crafts.setText("")
+    block.crafts.editingFinished.emit()
+    assert window.session.tiers[2].crafts is None
+    assert block.crafts.placeholderText() == "4.0"  # back to what the chain needs
 
 
 def test_keyboard_space_toggles_and_delete_clears(window: MainWindow) -> None:
@@ -186,3 +214,85 @@ def test_bad_splendent_price_names_the_field(window: MainWindow) -> None:
     window.summary.combo_sell_field.editingFinished.emit()
     assert window.summary.combo_sell_field.property("invalid") is True
     assert window._status.text().startswith("Splendent price")
+
+
+def wrathful_ids(catalog: Catalog) -> tuple[int, ...]:
+    return tuple(i for i, item in catalog.items.items() if item.name == "Wrathful Mind")
+
+
+def test_capture_prices_flow_into_the_calculator(window: MainWindow, catalog: Catalog) -> None:
+    row = MarketRow("Wrathful Mind", "Wrathful Mind", wrathful_ids(catalog), True, 39, 999_990)
+    window.apply_reading(MarketReading((row,)))
+    model = top(window).model
+    wrathful = model.row(model.index(row_of(model, "Wrathful"), 0))
+    assert (wrathful.unit_price, wrathful.source) == (999_990, Source.OCR)
+    assert window._status.text() == "Captured 1 price: Wrathful Mind"
+    # A manual price still wins, and is saved.
+    model.setData(model.index(row_of(model, "Wrathful"), COST), "900,000")
+    assert model.row(model.index(row_of(model, "Wrathful"), 0)).source is Source.MANUAL
+    assert window._store.manual_prices()[wrathful.item_id] == 900_000
+    # A new capture is newer, so it replaces the typed price.
+    window.apply_reading(MarketReading((replace(row, price=950_000),)))
+    again = model.row(model.index(row_of(model, "Wrathful"), 0))
+    assert (again.unit_price, again.source) == (950_000, Source.OCR)
+    assert wrathful.item_id not in window._store.manual_prices()
+
+
+def test_capture_problems_are_reported(window: MainWindow) -> None:
+    window.apply_reading(MarketReading((), "market list not found"))
+    assert window._status.text() == "Capture failed: market list not found"
+    window.apply_reading(MarketReading((MarketRow("Ruby", "Ruby", (1,), True, None, None),)))
+    assert window._status.text().startswith("! No prices captured")
+
+
+def test_market_price_of_the_finished_item_fills_the_sell_price(
+    window: MainWindow, catalog: Catalog
+) -> None:
+    ids = tuple(i for i, item in catalog.items.items() if item.name == "Star Dragon Lord Necklace")
+    row = MarketRow(
+        "Star Dragon Lord Necklace", "Star Dragon Lord Necklace", ids, True, 2, 40_000_000
+    )
+    window.apply_reading(MarketReading((row,)))
+    assert window.summary.sell_field.placeholderText() == "40,000,000 (market)"
+    assert window.summary._profit.text() != "—"  # a profit is shown without typing anything
+
+
+def test_a_capture_replaces_the_typed_sell_price(window: MainWindow, catalog: Catalog) -> None:
+    ids = tuple(i for i, item in catalog.items.items() if item.name == "Star Dragon Lord Necklace")
+    window.summary.sell_field.setText("10,000,000")
+    window.summary.sell_field.editingFinished.emit()
+    row = MarketRow("Ruby", "Ruby", (1,), True, 5, 100)  # another item leaves it alone
+    window.apply_reading(MarketReading((row,)))
+    assert window.session is not None and window.session.sell_price == 10_000_000
+    row = MarketRow(
+        "Star Dragon Lord Necklace", "Star Dragon Lord Necklace", ids, True, 2, 40_000_000
+    )
+    window.apply_reading(MarketReading((row,)))
+    assert window.session.sell_price is None
+    assert window.session.effective_sell_price() == 40_000_000
+    assert window.summary.sell_field.text() == ""
+
+
+def test_search_dropdown_matches_words_in_any_order(window: MainWindow) -> None:
+    from aion2calc.ui.recipe_search import matching
+
+    names = ["Ruby Necklace · Common", "Star Dragon Lord Necklace · Unique", "Ruby Ring · Common"]
+    assert matching(names, "neck ruby") == ["Ruby Necklace · Common"]
+    assert matching(names, "ruby") == ["Ruby Necklace · Common", "Ruby Ring · Common"]
+    assert matching(names, "  ") == []
+    search = window.search
+    search.setText("star neck")
+    search.textEdited.emit("star neck")
+    shown = search._model.stringList()
+    assert "Star Dragon Lord Necklace · Unique" in shown
+    opened: list[int] = []
+    search.chosen.connect(opened.append)
+    search.choose("Star Dragon Lord Necklace · Unique")
+    assert opened == [STAR_DRAGON_LORD_NECKLACE]
+
+
+def test_approximate_names_are_reported_not_saved(window: MainWindow, catalog: Catalog) -> None:
+    row = MarketRow("Wrathfull Mind", "Wrathful Mind", wrathful_ids(catalog), False, 39, 1)
+    window.apply_reading(MarketReading((row,)))
+    assert window._status.text() == "! Not saved, name not recognised exactly: Wrathfull Mind"
+    assert window._store.latest_ocr() == {}

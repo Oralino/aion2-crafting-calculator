@@ -130,6 +130,7 @@ QLabel[role="warning"] {{ font-size: 12px; color: {WARNING}; }}
 QLabel[tone="positive"] {{ color: {POSITIVE}; }}
 QLabel[tone="danger"] {{ color: {DANGER}; }}
 QLabel[tone="muted"] {{ color: {TEXT_MUTED}; }}
+QLabel[tone="warning"] {{ color: {WARNING}; }}
 
 QLineEdit {{ background: {BG_INSET}; border: 1px solid {BORDER_CONTROL}; border-radius: 4px;
     padding: 0 8px; min-height: 30px; selection-background-color: {BG_SELECTED};

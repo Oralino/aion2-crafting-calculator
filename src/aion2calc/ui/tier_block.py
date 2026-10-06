@@ -1,6 +1,7 @@
 """One tier of the chain: header with chance/combo inputs and results, and the material table."""
 
 from collections.abc import Callable
+from datetime import UTC, datetime
 from typing import Any
 
 from PySide6.QtCore import (
@@ -34,7 +35,16 @@ from PySide6.QtWidgets import (
 from aion2calc.calc import TierCost
 from aion2calc.session import CraftSession, MaterialRow, Source
 from aion2calc.ui import theme
-from aion2calc.ui.format import DASH, count, kinah, parse_kinah, parse_percent, percent
+from aion2calc.ui.format import (
+    DASH,
+    age,
+    count,
+    is_stale,
+    kinah,
+    parse_kinah,
+    parse_percent,
+    percent,
+)
 
 INCL, MATERIAL, QTY, COST, SOURCE, TOTAL = range(6)
 HEADERS = ["Incl.", "Material", "Qty", "Cost per (Kinah)", "Source", "Total"]
@@ -45,9 +55,11 @@ ROW_HEIGHT = 28
 Index = QModelIndex | QPersistentModelIndex
 
 BADGES = {
+    Source.OCR: ("OCR", theme.TEXT_SECONDARY, theme.BORDER_CONTROL),
     Source.MANUAL: ("MANUAL", theme.ACCENT, theme.ACCENT),
     Source.MISSING: ("! MISSING", theme.WARNING, theme.WARNING),
     Source.CRAFTED: ("CRAFTED", theme.TEXT_SECONDARY, theme.BORDER_CONTROL),
+    Source.VALUED: ("VALUE", theme.ACCENT, theme.ACCENT),
 }
 
 
@@ -93,10 +105,9 @@ class MaterialModel(QAbstractTableModel):
         if not index.isValid():
             return Qt.ItemFlag.NoItemFlags
         flags = Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
-        crafted = self.row(index).source is Source.CRAFTED
-        if index.column() == INCL and not crafted:
+        if index.column() == INCL and not _splendent(self.row(index)):
             flags |= Qt.ItemFlag.ItemIsUserCheckable
-        if index.column() == COST and not crafted:
+        if index.column() == COST:  # the Splendent row takes the piece's value
             flags |= Qt.ItemFlag.ItemIsEditable
         return flags
 
@@ -105,11 +116,12 @@ class MaterialModel(QAbstractTableModel):
             return None
         row, col = self.row(index), index.column()
         crafted = row.source is Source.CRAFTED
+        splendent = _splendent(row)
         if role in (Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.AccessibleTextRole):
             return self._display(row, col, role)
         if role == Qt.ItemDataRole.EditRole and col == COST:
             return "" if row.unit_price is None else str(row.unit_price)
-        if role == Qt.ItemDataRole.CheckStateRole and col == INCL and not crafted:
+        if role == Qt.ItemDataRole.CheckStateRole and col == INCL and not splendent:
             return Qt.CheckState.Unchecked if row.excluded else Qt.CheckState.Checked
         if role == Qt.ItemDataRole.TextAlignmentRole:
             return _alignment(col)
@@ -120,7 +132,7 @@ class MaterialModel(QAbstractTableModel):
         if role == Qt.ItemDataRole.ForegroundRole:
             dim = row.excluded or crafted or (col in (COST, TOTAL) and row.unit_price is None)
             return QBrush(QColor(theme.TEXT_MUTED if dim else theme.TEXT_PRIMARY))
-        if role == Qt.ItemDataRole.BackgroundRole and col == COST and not crafted:
+        if role == Qt.ItemDataRole.BackgroundRole and col == COST:
             return QBrush(QColor(theme.BG_INSET))  # editable cells stay findable
         if role == Qt.ItemDataRole.ToolTipRole:
             return self._tooltip(row, col)
@@ -129,7 +141,9 @@ class MaterialModel(QAbstractTableModel):
     def _display(self, row: MaterialRow, col: int, role: int) -> str:
         if col == INCL and role == Qt.ItemDataRole.AccessibleTextRole:
             if row.source is Source.CRAFTED:
-                return "Not bought"
+                return "Crafted in the tier below"
+            if row.source is Source.VALUED:
+                return "Valued; tiers below not counted"
             return "Excluded" if row.excluded else "Included"
         if col == MATERIAL:
             return row.name
@@ -138,20 +152,31 @@ class MaterialModel(QAbstractTableModel):
         if col == COST:
             return DASH if row.source is Source.CRAFTED else kinah(row.unit_price)
         if col == SOURCE:
-            return BADGES[row.source][0]  # the delegate paints it as a badge
+            text = BADGES[row.source][0]  # the delegate paints it as a badge
+            if row.observed_at is not None:
+                text += f" {age(row.observed_at, datetime.now(UTC))}"
+            return text
         if col == TOTAL:
             return DASH if row.source is Source.CRAFTED else kinah(row.total)
         return ""
 
     def _tooltip(self, row: MaterialRow, col: int) -> str | None:
         if row.source is Source.CRAFTED:
-            return "Made by the tier below (its combo result), so it isn't bought."
+            return (
+                "Made by the tier below (its 25% combo result). Type its market value or what it "
+                "cost you to count that instead; the tiers below then aren't counted."
+            )
+        if row.source is Source.VALUED:
+            return "Counted at your value; the tiers below aren't counted. Delete clears it."
         if row.excluded:
             return "Excluded from cost"
         if col == COST:
             return "Type a price and press Enter; Delete clears it."
         if col == SOURCE and row.source is Source.MISSING:
-            return "No price yet: counted as 0."
+            return "No price yet: counted as 0. Search it in the market and press F10."
+        if col == SOURCE and row.observed_at is not None:
+            local = row.observed_at.astimezone().strftime("%Y-%m-%d %H:%M")
+            return f"Lowest market price, read {local}. Type a price to override it."
         return None
 
     def setData(self, index: Index, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:  # noqa: N802
@@ -159,15 +184,17 @@ class MaterialModel(QAbstractTableModel):
             return False
         row, col = self.row(index), index.column()
         if col == INCL and role == Qt.ItemDataRole.CheckStateRole:
-            if row.source is Source.CRAFTED:
+            if _splendent(row):
                 return False
             excluded = Qt.CheckState(value) == Qt.CheckState.Unchecked
             self._session.set_excluded(self._tier, row.item_id, excluded)
         elif col == COST and role == Qt.ItemDataRole.EditRole:
-            if row.source is Source.CRAFTED:
-                return False
             try:
-                self._session.set_price(row.item_id, parse_kinah(str(value or "")))
+                price = parse_kinah(str(value or ""))
+                if _splendent(row):
+                    self._session.set_crafted_value(self._tier, price)
+                else:
+                    self._session.set_price(row.item_id, price)
             except ValueError:
                 self.rejected.emit(f"“{value}” isn't a Kinah amount. Use digits, e.g. 45,000.")
                 return False
@@ -182,6 +209,11 @@ class MaterialModel(QAbstractTableModel):
             checked = self.data(incl, Qt.ItemDataRole.CheckStateRole) == Qt.CheckState.Checked
             new = Qt.CheckState.Unchecked if checked else Qt.CheckState.Checked
             self.setData(incl, new.value, Qt.ItemDataRole.CheckStateRole)
+
+
+def _splendent(row: MaterialRow) -> bool:
+    """The Splendent piece made by the tier below (valued or not)."""
+    return row.source in (Source.CRAFTED, Source.VALUED)
 
 
 def _alignment(col: int) -> Qt.AlignmentFlag:
@@ -232,6 +264,17 @@ class BadgeDelegate(CellDelegate):
         painter.drawRoundedRect(QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5), 4, 4)
         painter.setPen(QColor(colour))
         painter.drawText(rect, Qt.AlignmentFlag.AlignCenter, text)
+        observed = model.row(index).observed_at
+        if observed is not None:
+            now = datetime.now(UTC)
+            stale = is_stale(observed, now)
+            painter.setFont(theme.font(11, mono=True))
+            painter.setPen(QColor(theme.WARNING if stale else theme.TEXT_MUTED))
+            label = f"! {age(observed, now)}" if stale else age(observed, now)
+            after = QRect(rect.right() + 6, rect.top(), option.rect.right() - rect.right(), 18)
+            painter.drawText(
+                after, Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignLeft, label
+            )
         painter.restore()
 
 
@@ -373,9 +416,21 @@ class TierBlock(QFrame):
         self.has_combo = not top_tier or session.final_combo_item is not None
         self.chance.editingFinished.connect(self._chance_edited)
         self.combo.editingFinished.connect(self._combo_edited)
+        self.crafts = _RateField(f"Planned crafts, {recipe_name}")
+        self.crafts.setText("" if settings.crafts is None else f"{settings.crafts:,}")
+        self.crafts.setToolTip(
+            "How many crafts you plan for this tier. Leave empty to use what the chain needs "
+            "(shown in grey); the tiers below adjust to supply your crafts."
+        )
+        self.crafts.editingFinished.connect(self._crafts_edited)
+        self._notice = _label("", "warning")
+        self._notice.hide()
 
         self._successes = _label("", "num")
-        self._crafts = _label("", "num")
+        self._combos = _label("", "num")
+        self._combos.setToolTip(
+            "Expected Splendent results from this tier's successes (successes × combo chance)"
+        )
         self._cost = _label("", "num-strong")
         self._lost = _label("", "num-secondary")
         self._lost.setToolTip(
@@ -405,12 +460,18 @@ class TierBlock(QFrame):
             inputs.addWidget(self.combo)
         else:
             self.combo.hide()
+        inputs.addSpacing(8)
+        inputs.addWidget(_label("Crafts", "label", self.crafts))
+        inputs.addWidget(self.crafts)
         inputs.addSpacing(16)
         inputs.addWidget(_label("Successes", "secondary"))
         inputs.addWidget(self._successes)
-        inputs.addSpacing(8)
-        inputs.addWidget(_label("Crafts", "secondary"))
-        inputs.addWidget(self._crafts)
+        if self.has_combo:
+            inputs.addSpacing(16)
+            inputs.addWidget(_label("Combos", "secondary"))
+            inputs.addWidget(self._combos)
+        else:
+            self._combos.hide()
         inputs.addStretch(1)
 
         self.table = QTableView()
@@ -448,12 +509,13 @@ class TierBlock(QFrame):
         layout.setContentsMargins(16, 12, 16, 12)
         layout.setSpacing(8)
         layout.addLayout(top)
+        layout.addWidget(self._notice)
         layout.addLayout(inputs)
         layout.addWidget(self.table)
 
     def focus_chain(self) -> list[QWidget]:
         """This block's inputs in tab order."""
-        return [self.chance, *([self.combo] if self.has_combo else []), self.table]
+        return [self.chance, *([self.combo] if self.has_combo else []), self.crafts, self.table]
 
     def _chance_edited(self) -> None:
         self._rate_edited(self.chance, lambda v: self._session.set_chance(self._index, v))
@@ -479,9 +541,38 @@ class TierBlock(QFrame):
         if (settings.chance, settings.combo_rate) != before:
             self.changed.emit()
 
+    def _crafts_edited(self) -> None:
+        text = self.crafts.text().replace(",", "").strip()
+        before = self._session.tiers[self._index].crafts
+        try:
+            if text and not text.isdigit():
+                raise ValueError(text)
+            self._session.set_crafts(self._index, int(text) if text else None)
+        except ValueError:
+            self.crafts.set_invalid(True)
+            self.message.emit("Crafts must be a whole number, e.g. 80 (or empty for automatic)")
+            return
+        self.crafts.set_invalid(False)
+        planned = self._session.tiers[self._index].crafts
+        self.crafts.setText("" if planned is None else f"{planned:,}")
+        if planned != before:
+            self.changed.emit()
+
     def refresh(self, cost: TierCost) -> None:
         self.model.reload()
         self._successes.setText(count(cost.successes))
-        self._crafts.setText(count(cost.attempts))
-        self._cost.setText(kinah(cost.cost))
-        self._lost.setText(kinah(cost.lost))
+        self._combos.setText(count(cost.combos))
+        self.crafts.setPlaceholderText(count(cost.attempts))  # shown while nothing is planned
+        if cost.counted:
+            self._notice.hide()
+            self._cost.setText(kinah(cost.cost))
+            self._lost.setText(kinah(cost.lost))
+        else:
+            first = self._session.first_tier
+            piece = next(r.name for r in self._session.rows(first) if r.source is Source.VALUED)
+            self._notice.setText(
+                f"! Not counted: you entered a value for {piece} (tier {first + 1})"
+            )
+            self._notice.show()
+            self._cost.setText(DASH)
+            self._lost.setText(DASH)

@@ -1,5 +1,7 @@
 """Main window: header (recipe search, tabs), calculator page, summary panel, status bar."""
 
+from datetime import datetime
+
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
@@ -14,7 +16,9 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from aion2calc.data.prices import PriceStore
 from aion2calc.data.recipes import Catalog
+from aion2calc.ocr.market import MarketReading
 from aion2calc.session import CraftSession, Settings
 from aion2calc.ui.recipe_search import RecipeSearch
 from aion2calc.ui.settings_page import SettingsPage
@@ -32,13 +36,14 @@ def _label(text: str, role: str) -> QLabel:
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, catalog: Catalog, settings: Settings) -> None:
+    def __init__(self, catalog: Catalog, settings: Settings, store: PriceStore) -> None:
         super().__init__()
         self.setWindowTitle("Aion2 Crafting Calculator")
         self.setMinimumSize(960, 640)
         self.resize(1280, 800)
         self._catalog = catalog
         self._settings = settings
+        self._store = store
         self.session: CraftSession | None = None
         self.blocks: list[TierBlock] = []
 
@@ -110,7 +115,8 @@ class MainWindow(QMainWindow):
 
         status = QStatusBar()
         status.setSizeGripEnabled(False)
-        status.addWidget(_label("Capture: not set up yet", "caption"))
+        self._capture_label = _label("Capture: not set up", "caption")
+        status.addWidget(self._capture_label)
         self._status = _label("Ready", "caption")
         self._status.setProperty("tone", "muted")
         status.addWidget(self._status, 1)
@@ -151,9 +157,14 @@ class MainWindow(QMainWindow):
         if old is not None and old.final_item == item_id:
             self.session = old  # re-picking the open recipe keeps every input
         else:
-            # Prices are per item, so they carry over to the next recipe.
-            prices = old.prices if old is not None else None
-            self.session = CraftSession(self._catalog, item_id, self._settings, prices)
+            self.session = CraftSession(
+                self._catalog,
+                item_id,
+                self._settings,
+                prices=self._store.manual_prices(),
+                market=self._store.latest_ocr(),
+            )
+            self.session.on_manual_price = self._store.set_manual
         self._tiers_layout.addWidget(_label(self.session.name(item_id), "heading"))
         for index in range(len(self.session.tiers)):
             block = TierBlock(self.session, index)
@@ -189,6 +200,53 @@ class MainWindow(QMainWindow):
 
     def show_message(self, text: str) -> None:
         self._set_status(text, "danger")
+
+    def set_capture_label(self, text: str) -> None:
+        self._capture_label.setText(text)
+
+    def capture_started(self) -> None:
+        self._set_status("Reading listings…", "")
+
+    def apply_reading(self, reading: MarketReading, when: datetime | None = None) -> None:
+        """Store a capture's prices, refresh the calculator and report what was read."""
+        if reading.problem:
+            self.show_message(f"Capture failed: {reading.problem}")
+            return
+        priced = reading.priced
+        approximate = reading.approximate
+        unsaved = ""
+        if approximate:
+            names = ", ".join(r.text for r in approximate[:2])
+            more = f" +{len(approximate) - 2} more" if len(approximate) > 2 else ""
+            unsaved = f"! Not saved, name not recognised exactly: {names}{more}"
+        if not priced:
+            if approximate:
+                detail = unsaved
+            elif reading.rows:
+                count = len(reading.rows)
+                detail = f"! No prices captured: {count} items had no listings or no clear price"
+            else:
+                detail = "! No prices captured: no known items in the list"
+            self._set_status(detail, "warning")
+            return
+        self._store.record_ocr(
+            [(r.item_ids, r.price, r.listings) for r in priced if r.price is not None], at=when
+        )
+        if self.session is not None:
+            self.session.market = self._store.latest_ocr()
+            self.session.prices = self._store.manual_prices()  # the capture replaced typed ones
+            captured = {item_id for row in priced for item_id in row.item_ids}
+            if self.session.clear_captured_sell_prices(captured):
+                self.summary.set_session(self.session)  # empty the replaced sell price fields
+            self.recalculate()
+        names = ", ".join(r.name or r.text for r in priced[:3])
+        more = f" +{len(priced) - 3} more" if len(priced) > 3 else ""
+        noun = "price" if len(priced) == 1 else "prices"
+        summary = f"Captured {len(priced)} {noun}: {names}{more}"
+        if unsaved:
+            self._set_status(f"{summary} · {unsaved}", "warning")
+        else:
+            self._set_status(summary, "positive")
 
     def _set_status(self, text: str, tone: str) -> None:
         self._status.setText(text)

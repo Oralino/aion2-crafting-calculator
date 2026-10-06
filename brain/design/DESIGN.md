@@ -143,7 +143,9 @@ Header row (one line, wraps to two below ~1100px):
   in `tier.rare`) plus `Tier 2 of 4 · Rare` in `caption` `text.secondary`. The words are the
   non-colour identity.
 - Inputs: `Chance [ 93.1 %]`, `Combo [ 25.0 %]`, inset 72px-wide fields, `label` before each.
-- Computed: `Successes 16.0` · `Crafts 17.2` (Mono, `text.primary`, labels `text.secondary`).
+- Computed: `Successes 16.0` · `Combos 4.0` (Mono, `text.primary`, labels `text.secondary`);
+  Combos = successes × combo chance, shown only where the Combo input is. Crafts shows the needed
+  attempts as the Crafts field's placeholder.
 - Right: `Tier cost 1,234,567` (Mono 13px/600, primary) and `Lost 925,925` (Mono, `text.secondary`;
   it's an expected cost, not an error, so not red).
 - Later (buy vs. craft): a two-option segmented control `Craft | Buy` with the cheaper option marked

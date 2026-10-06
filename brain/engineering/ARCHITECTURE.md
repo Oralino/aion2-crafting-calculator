@@ -1,14 +1,16 @@
 # ARCHITECTURE.md
 How the app works. What it must do is in `../product/REQUIREMENTS.md`.
-Status: built so far: `calc/`, `data/` (recipe import), `session.py` and the main window in `ui/`.
-Capture, OCR and the SQLite store are planned; update this file as code lands.
+Status: built so far: `calc/`, `data/` (recipe import, SQLite price store), `session.py`, the main
+window in `ui/`, and F10 capture (`capture/`, `ocr/`). Update this file as code lands.
 
 ## Stack
 - Python 3.13, PySide6 (Qt) for the UI.
 - SQLite (stdlib `sqlite3`) for prices, history and overrides (recipes are JSON, see Storage).
 - OCR: **RapidOCR** (`rapidocr` + `onnxruntime`, Apache-2.0 / MIT) with its English PP-OCRv5 mobile
-  recognition model; OpenCV (headless build) for preprocessing. Chosen in the OCR spike (below);
-  to be confirmed on auction house screenshots.
+  recognition model, for item names (OpenCV comes in as RapidOCR's own dependency; the app doesn't
+  use it directly). Chosen in the OCR spike and confirmed on market captures (below).
+- **numpy**: digit template matching for prices and listing counts (`ocr/digits.py`).
+- **Pillow**: screen capture of the game window (`ImageGrab`) and the row crops OCR reads.
 - Fonts: Inter 4.1 (Regular/Medium/SemiBold) and JetBrains Mono 2.304 (Regular/SemiBold) static
   TTFs in `src/aion2calc/ui/fonts/` with their OFL 1.1 licence files, registered at startup
   (`theme.load_fonts`); downloaded from the projects' GitHub releases (owner OK, 2026-10-05).
@@ -22,9 +24,9 @@ Capture, OCR and the SQLite store are planned; update this file as code lands.
 | `app.py` | Entry point; applies the theme, loads `data/recipes.json` and settings, opens the window. |
 | `session.py` | The open craft (Qt-free): a recipe chain plus the user's prices, chances, combo rates, exclusions and sell price, validated, turned into `calc` objects. Combo items made by the tier below are CRAFTED (cost 0). |
 | `ui/` | Widgets only, reading and editing a `CraftSession`: `theme.py` (all design tokens, QPalette and generated QSS), `format.py` (number display/parsing), `tier_block.py` (tier header + material table model and delegates), `summary.py`, `recipe_search.py`, `settings_page.py`, `settings_store.py` (QSettings, validated on load), `main_window.py`. |
-| `capture/` | Global hotkey; grabs the game window or screen region. Later: automated scan. |
-| `ocr/` | Locate the listing area, preprocess, run OCR, parse rows, match names to known items. |
-| `data/` | aion2hub page parser (`aion2hub.py`), recipe catalog and tier chains (`recipes.py`); later the SQLite store. |
+| `capture/` | F10 global hotkey (`hotkey.py`), the game window's client area capture (`window.py`, only when AION 2 is the active window), OCR on a background thread (`worker.py`). Later: automated scan. |
+| `ocr/` | Find the market list from its header labels, crop rows, read names (RapidOCR) and numbers (`digits.py` templates), match names to known items (`market.py`). |
+| `data/` | aion2hub page parser (`aion2hub.py`), recipe catalog and tier chains (`recipes.py`), SQLite price store (`prices.py`). |
 | `calc/` | Pure functions: combo-chain tier cost, needed crafts, lost value, exclusions, tax; later buy-vs-craft and profit. |
 
 Dev tools live in `tools/` and aren't shipped: `tools/import_recipes.py` rebuilds `data/recipes.json`.
@@ -56,8 +58,15 @@ next to the `.exe`.
 - Never hard-code pixel coordinates. Find the listing panel relative to anchors (template matching on
   stable UI elements) and scale to a reference size before OCR.
 - Fixture screenshots per resolution in `tests/fixtures/`, each with expected rows, drive the tests.
-- Name matching: OCR text is fuzzy-matched to known item names; low-confidence matches are flagged,
-  not silently stored.
+- Name matching: OCR text is matched to known item names. Only exact matches (after normalising
+  case, spaces and apostrophes) are stored; an approximate match is shown in the status bar as "not
+  saved", because an uncatalogued item with a similar name would overwrite a real price.
+- **A wrong price is worse than none.** A number is dropped (no price) when any digit is an unclear
+  match (template distance over 0.2, or under 0.03 closer than the runner-up; held-out fixture
+  digits score at most 0.14 and at least 0.07), a glyph is wider than tall (touching digits or a
+  stray line), the reading has a leading zero or is 10,000+ without commas, or the price is 0.
+  `digit_templates.npz` must have every digit, or loading fails.
+- An item listed more than once in one capture keeps its lowest price.
 
 ### OCR spike (2026-10-05)
 Run on the owner's 4 crafting-window screenshots (same game font as the auction house; no AH
@@ -155,4 +164,8 @@ and `1,428` / `25,320` with thousands separators.
 ## Constraints and risks
 - **Game ToS / anti-cheat:** hotkey capture only reads the screen. The later automated scan sends
   input to the game and must be opt-in with a warning.
+- **The game runs as administrator** (verified 2026-10-05: its process can't be opened from a normal
+  one). Windows doesn't deliver a non-admin app's `RegisterHotKey` hotkey while an admin window has
+  focus, so F10 only works when the calculator runs as administrator too. The `.exe` must request
+  admin (`uac_admin` in PyInstaller).
 - No network calls at runtime except, possibly, a future recipe-data update (TBD).
