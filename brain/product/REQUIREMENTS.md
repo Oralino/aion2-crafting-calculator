@@ -88,8 +88,11 @@ Confirmed from the owner's sheet and in-game screenshots of the Ruby Necklace ch
 - **Combo rate is 25% for every weapon and accessory recipe** (2026-10-05); it stays editable.
 - Top-tier "Splendent" items (e.g. Splendent Dark Dragon Lord Boots) are the 25% combo result of
   their normal recipe, even where aion2hub lists a separate recipe for them (2026-10-05).
-- **Recipe source: aion2hub.com HTML pages**, scraped at dev time, throttled, for personal use
-  (2026-10-05). Its `/api/` is disallowed by robots.txt and is not used.
+- **Recipe source: aion2hub.com HTML pages**, scraped at dev time, throttled (2026-10-05). Its
+  `/api/` is disallowed by robots.txt and is not used.
+- **Public repo, recipe data included, no aion2hub credit** (owner, 2026-10-05): `recipes.json`
+  ships in the repo and the `.exe`. The owner says aion2hub's data comes from a public NCSoft API;
+  not verified (the 2026-10-05 source research found no public API, see ARCHITECTURE.md).
 - **Craft chance** is the in-game proficiency success rate (shown in the crafting panel). A
   proficiency-based chance curve is a later feature.
 - Weapon crafting is left out of the sheet reference; weapon recipes come from the owner's list or the
