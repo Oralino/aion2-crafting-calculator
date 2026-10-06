@@ -20,6 +20,7 @@ private/
 *.sqlite3
 *.db
 brain/work/HANDOFF.md
+brain/archive/
 .claude/settings.local.json
 
 # Recipe import cache
