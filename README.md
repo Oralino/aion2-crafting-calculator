@@ -6,7 +6,9 @@ worth doing. It reads auction house (Market) prices straight from your screen.
 **Status:** in development. The calculator and market capture work.
 
 ## Install
-1. Unzip the `Aion2CraftingCalculator` folder anywhere (keep everything in it together).
+1. Download the latest `Aion2CraftingCalculator-…-windows.zip` from
+   [Releases](https://github.com/Oralino/aion2-crafting-calculator/releases) and unzip it anywhere
+   (keep everything in the folder together).
 2. Run `Aion2CraftingCalculator.exe`. Windows asks for administrator rights: AION 2 runs as
    administrator, and Windows only passes the F10 key to an app that does too. Windows
    SmartScreen may warn about an unknown app (it isn't signed); choose "More info" → "Run anyway".
